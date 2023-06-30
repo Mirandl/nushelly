@@ -1,16 +1,25 @@
 <template>
   <div class="header">
+  <!-- 顶部条 -->
     <div class="nav-topbar">
+     <!-- 容器 -->
       <div class="container">
+       <!-- 左侧菜单信息 -->
         <div class="topbar-menu">
-          <a href="javascript:;">小米商城</a>
-          <a href="javascript:;">MUI</a>
-          <a href="javascript:;">云服务</a>
+          <a href="javascript:;">果壳里官方</a>
+          <a href="javascript:;">DOI个性化定制</a>
+          <a href="javascript:;">云协同</a>
+          <a href="javascript:;">我要入驻</a>
+          <a href="javascript:;">果果周边</a>
           <a href="javascript:;">协议规则</a>
+          <a href="javascript:;">协议规则</a>
+          <a href="javascript:;">下载APP</a>
+          <a href="javascript:;">Change Location</a>
         </div>
+        <!-- 右侧用户信息 -->
         <div class="topbar-user">
             <!-- 如果有username就加载用户名 -->
-          <a href="javascript:;" v-if="username">{{username}}</a>
+          <a href="javascript:;" v-if="username">{{username}}那菈</a>
           <!-- 如果没有用户名才显示登录 -->
           <a href="javascript:;" v-if="!username" @click="login">登录</a>
           <!-- 如果有username就加载退出-->
@@ -24,35 +33,33 @@
     </div>
     <div class="nav-header">
       <div class="container">
+        <!-- 左侧logo可视化区 -->
         <div class="header-logo">
+        <!-- 点击logo跳转 -->
           <a href="/#/index"></a>
         </div>
         <div class="header-menu">
           <div class="item-menu">
-            <span>小米手机</span>
-            <div class="children">
-              <ul>
-                <!-- 直接读取后台数据，当数据量大时，用key自动缓存，渲染速度更高，复用率更高 -->
-                <li class="product" v-for="(item,index) in phoneList" :key="index">
-                    <!-- v-bind绑定id属性 -->
-                  <a v-bind:href="'/#/product/'+item.id" target="_blank">
-                    <div class="pro-img">
-                        <!-- 动态渲染图片 -->
-                      <img v-lazy="item.mainImage" :alt="item.subtitle">
-                    </div>
-                    <div class="pro-name">{{item.name}}</div>
-                    <!-- 加过滤器currency -->
-                    <div class="pro-price">{{item.price | currency}}</div>
-                  </a>
-                </li>
-              </ul>
-            </div>
+              <span>推荐</span>
           </div>
           <div class="item-menu">
-            <span>RedMi红米</span>
+              <span>3折疯抢</span>
           </div>
+          <!-- 直接读取后台数据，当数据量大时，用key自动缓存，渲染速度更高，复用率更高
+          <li class="product" v-for="(item,index) in phoneList" :key="index">
+            v-bind绑定id属性 
+            <a v-bind:href="'/#/product/'+item.id" target="_blank">
+              <div class="pro-img">
+                  动态渲染图片
+                <img v-lazy="item.mainImage" :alt="item.subtitle">
+              </div>
+              <div class="pro-name">{{item.name}}</div>
+              加过滤器currency
+              <div class="pro-price">{{item.price | currency}}</div>
+            </a>
+          </li> -->
           <div class="item-menu">
-            <span>电视</span>
+            <span>国潮破茧</span>
             <div class="children">
               <ul>
                 <li class="product">
@@ -112,7 +119,22 @@
               </ul>
             </div>
           </div>
+          <div class="item-menu">
+              <span>甜酷多巴胺</span>
+              <!-- 嵌套可展开的子盒子 -->
+              <div class="children"></div>
+          </div>
+          <div class="item-menu">
+              <span>极简随性</span>
+          </div>
+          <div class="item-menu">
+              <span>售后服务</span>
+          </div>
+          <div class="item-menu">
+              <span>社区共享</span>
+          </div>
         </div>
+        <!-- 导航 -->
         <div class="header-search">
           <div class="wrapper">
             <input type="text" name="keyword">
@@ -164,7 +186,7 @@
         // 与后端交互，获取数据
     // 登录跳转
       login(){
-        this.$router.push('/login');
+        this.$router.push('/#/login');
       },
       getProductList(){
         this.axios.get('/products',{
@@ -202,6 +224,7 @@
     }
   }
 </script>
+<!-- lang标明书写css的样式类型 有scss css less 默认是css -->
 <style lang="scss">
   @import './../assets/scss/base.scss';
   @import './../assets/scss/mixin.scss';
@@ -210,21 +233,24 @@
     .nav-topbar{
       height:39px;
       line-height:39px;
-      background-color:#333333;
-      color:#B0B0B0;
+      background-color:$colorB;
+      color:$colorG;
       .container{
+        // 抽离功能，增加复用性
         @include flex();
         a{
           display:inline-block;
-          color:#B0B0B0;
+          color:$colorG;
+          // 增加间距
           margin-right:17px;
         }
         .my-cart{
           width:110px;
-          background-color:#FF6600;
+          background-color:$colorA;
           text-align:center;
           color:#ffffff;
           margin-right:0;
+          // 购物车图标
           .icon-cart{
             @include bgImg(16px,12px,'../../public/imgs/icon-cart-checked.png');
             margin-right:4px;
@@ -233,14 +259,17 @@
       }
     }
     .nav-header{
+      // 整个在中央容器里
       .container{
         position:relative;
         height:112px;
         @include flex();
+        // 中间分类导航区
         .header-menu{
           display:inline-block;
           width:643px;
           padding-left:209px;
+          // 设置小标题样式
           .item-menu{
             display:inline-block;
             color:#333333;
@@ -251,6 +280,7 @@
             span{
               cursor:pointer;
             }
+            // 下拉菜单
             &:hover{
               color:$colorA;
               .children{
@@ -330,13 +360,16 @@
             height:50px;
             border:1px solid #E0E0E0;
             display:flex;
+            // 居中
             align-items:center;
             input{
               border:none;
+              // 将边框和内边距的值包含在 width 内
               box-sizing: border-box;
               border-right:1px solid #E0E0E0;
               width:264px;
               height:50px;
+              // 输入框左侧有段距离
               padding-left:14px;
             }
             a{
