@@ -117,7 +117,8 @@
   import Modal from './../components/Modal'
   import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
   //   从已安装的插件模板中找到这个cs样式文件
-import 'swiper/dist/css/swiper.css'
+// import 'swiper/dist/css/swiper.css'
+import 'swiper/css/swiper.css'
   export default{
     name:'n-index',
     components:{
