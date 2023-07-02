@@ -246,24 +246,7 @@ import 'swiper/css/swiper.css'
               id:33,
               img:'https://img.alicdn.com/bao/uploaded/i2/1090075020/O1CN01N7TEIQ1mxD4w4fnXK_!!1090075020.jpg_240x240.jpg',
               name:'轻文艺-小耳',
-                }],
-            [{
-              id:30,
-              img:'../../public/imgs/item-box-1.png',
-              name:'小米CC9',
-            },{
-              id:31,
-              img:'../../public/imgs/item-box-2.png',
-              name:'小米8青春版',
-            },{
-              id:32,
-              img:'../../public/imgs/item-box-3.jpg',
-              name:'Redmi K20 Pro',
-            },{
-              id:33,
-              img:'../../public/imgs/item-box-4.jpg',
-              name:'移动4G专区',
-            }],[0,0,0,0],[0,0,0,0]
+                }],[0,0,0,0],[0,0,0,0]
         ],
         adsList:[
           {

@@ -122,8 +122,6 @@
           </div>
           <div class="item-menu">
               <span>甜酷青春</span>
-              <!-- 嵌套可展开的子盒子 -->
-              <div class="children"></div>
           </div>
           <div class="item-menu">
               <span>随性真我</span>
