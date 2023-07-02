@@ -41,8 +41,10 @@ axios.interceptors.response.use(function(response){
 
 Vue.use(VueAxios,axios);
 Vue.use(VueCookie);
-Vue.use(VueLazyLoad,{
-  loading:'/imgs/loading-svg/loading-bars.svg'
+Vue.use(VueLazyLoad, {
+    // 全局配置--加载动画
+    // 图片有固定分辨率，超出分辨率会失真，而svg矢量图不管放多大多小都不会失真，但制作成本较高
+  loading:'../public/imgs/loading-svg/loading-bars.svg'
 })
 Vue.prototype.$message = Message;
 Vue.config.productionTip = false

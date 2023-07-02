@@ -59,60 +59,61 @@
             </a>
           </li> -->
           <div class="item-menu">
-            <span>国潮破茧</span>
+            <span>品质国货</span>
             <div class="children">
               <ul>
                 <li class="product">
                   <a href="" target="_blank">
                     <div class="pro-img">
-                      <img v-lazy="'../../public/imgs/nav-img/nav-3-1.jpg'" alt="">
+                      <img v-lazy="'https://h2.appsimg.com/a.appsimg.com/upload/brand/upcb/2023/05/30/101/ias_1685427987682770458.jpg!75.webp'" alt="">
                     </div>
-                    <div class="pro-name">小米壁画电视 65英寸</div>
-                    <div class="pro-price">6999元</div>
+                    <div class="pro-name">生活在左女装-品牌专场</div>
+                    <div class="pro-price">5折封顶</div>
                   </a>
                 </li>
                 <li class="product">
                   <a href="" target="_blank">
                     <div class="pro-img">
-                      <img v-lazy="'../../public/imgs/nav-img/nav-3-2.jpg'" alt="">
+                      <img v-lazy="'https://h2.appsimg.com/a.appsimg.com/upload/merchandise/pdcvis/102824/2023/0620/30/dbbd77b0-25bc-4787-a85c-d982237fc9f7_273x273_90.jpg'" alt="">
                     </div>
-                    <div class="pro-name">小米全面屏电视E55A</div>
-                    <div class="pro-price">1999元</div>
+                    <div class="pro-name">安踏ANTA-大牌日</div>
+                    <div class="pro-price">1.7折起</div>
                   </a>
                 </li>
                 <li class="product">
                   <a href="" target="_blank">
                     <div class="pro-img">
-                      <img v-lazy="'../../public/imgs/nav-img/nav-3-3.png'" alt="">
+                      <img v-lazy="'https://h2.appsimg.com/a.appsimg.com/upload/brand/upcb/2023/01/04/50/ias_1672800136013721368.jpg!75.webp'" alt="">
+                      <!-- <img v-lazy="'../../public/imgs/nav-img/nav-3-3.png'" alt=""> -->
                     </div>
-                    <div class="pro-name">小米电视4A 32英寸</div>
-                    <div class="pro-price">699元</div>
+                    <div class="pro-name">一叶子美妆专场</div>
+                    <div class="pro-price">1.8折起</div>
                   </a>
                 </li>
                 <li class="product">
                   <a href="" target="_blank">
                     <div class="pro-img">
-                      <img v-lazy="'../../public/imgs/nav-img/nav-3-4.jpg'" alt="">
+                      <img v-lazy="'https://h2.appsimg.com/a.appsimg.com/upload/brand/upcb/2023/04/27/108/ias_1682580364463347105.jpg!75.webp'" alt="">
                     </div>
-                    <div class="pro-name">小米电视4A 55英寸</div>
-                    <div class="pro-price">1799元</div>
+                    <div class="pro-name">玖姿</div>
+                    <div class="pro-price">0.8折起</div>
                   </a>
                 </li>
                 <li class="product">
                   <a href="" target="_blank">
                     <div class="pro-img">
-                      <img v-lazy="'../../public/imgs/nav-img/nav-3-5.jpg'" alt="">
+                      <img v-lazy="'https://h2.appsimg.com/a.appsimg.com/upload/brand/upcb/2023/05/29/60/ias_1685352217409738156.jpg!75.webp'" alt="">
                     </div>
-                    <div class="pro-name">小米电视4A 65英寸</div>
-                    <div class="pro-price">2699元</div>
+                    <div class="pro-name">哥弟女装</div>
+                    <div class="pro-price">4.6折起</div>
                   </a>
                 </li>
                 <li class="product">
                   <a href="" target="_blank">
                     <div class="pro-img">
-                      <img v-lazy="'../../public/imgs/nav-img/nav-3-6.png'" alt="">
+                      <img v-lazy="'https://h2.appsimg.com/a.appsimg.com/upload/brand/upcb/2023/06/30/104/ias_1688086098170470058.jpg!75.webp'" alt="">
                     </div>
-                    <div class="pro-name">查看全部</div>
+                    <div class="pro-name">限时特卖</div>
                     <div class="pro-price">查看全部</div>
                   </a>
                 </li>
@@ -120,12 +121,12 @@
             </div>
           </div>
           <div class="item-menu">
-              <span>甜酷多巴胺</span>
+              <span>甜酷青春</span>
               <!-- 嵌套可展开的子盒子 -->
               <div class="children"></div>
           </div>
           <div class="item-menu">
-              <span>极简随性</span>
+              <span>随性真我</span>
           </div>
           <div class="item-menu">
               <span>售后服务</span>
@@ -252,7 +253,7 @@
           margin-right:0;
           // 购物车图标
           .icon-cart{
-            @include bgImg(16px,12px,'../../public/imgs/icon-cart-checked.png');
+            @include bgImg(16px,12px,'./../../public/imgs/icon-cart-checked.png');
             margin-right:4px;
           }
         }
@@ -373,7 +374,7 @@
               padding-left:14px;
             }
             a{
-              @include bgImg(18px,18px,'../../public/imgs/icon-search.png');
+              @include bgImg(18px,18px,'./../../public/imgs/icon-search.png');
               margin-left:17px;
             }
           }

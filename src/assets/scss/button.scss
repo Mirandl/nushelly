@@ -1,3 +1,5 @@
+// 不同大小的按钮样式
+// 最小的是产品页面里的立即购买
 .btn{
   display: inline-block;
   width:110px;
@@ -12,21 +14,25 @@
   background-color: #B0B0B0;
   color:$colorG;
 }
+// 中等大小事模态框中的确定和取消按钮
 .btn-large{
   width:202px;
   height: 50px;
   line-height: 50px;
   font-size:18px;
 }
+// 最大的是单个商品的详情页面的加入购物车
 .btn-huge{
   width:300px;
   height: 54px;
   line-height: 54px;
   font-size:16px;
 }
+// 多按钮之间的距离控制
 .btn-group{
   .btn{
     margin-right:20px;
+    // 多个按钮并排时，最后一个按钮不需要右边距
     &:last-child{
       margin-right:0;
     }

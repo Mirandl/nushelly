@@ -1,43 +1,59 @@
+// model.vue对应的样式-模态框
 .modal{
+    // 默认值 距离左侧和上侧都是0
   @include position(fixed);
   z-index: 10;
+//   必须设置动画的过渡时间，否则无效
   transition: all .5s;
+//   设置背景遮罩
   .mask{
     @include position(fixed);
     background-color: $colorI;
     opacity: 0.5;
   }
+//   vue自带的动画，动画name="slide"，这里就必须是slide开头的slide-enter-active
   &.slide-enter-active{
     top:0;
   }
+//   离开之后的位置--点击关闭之后
   &.slide-leave-active{
     top:-100%;
   }
+//   进入之前在顶部的里面，开始进入之后再从上面出来
+// slide-enter必须放在slide-enter-active的下面，入场动画才生效
   &.slide-enter{
     top:-100%;
   }
+//   设置弹框整体
   .modal-dialog{
+    // 距离顶部的高度top偏高一点好看，而高度根据内容自动变化
     @include position(absolute,40%,50%,660px,auto);
-    background-color: $colorG;
+    background-color: $colorG; //白色
+    // 针对当前定位，分别往上面和左边移动一半
     transform:translate(-50%,-50%);
+    // 弹框顶部
     .modal-header{
       height:60px;
       background-color: $colorJ;
       padding:0 25px;
       line-height: 60px;
       font-size:$fontI;
+    //   关闭弹框-叉号
       .icon-close{
         @include positionImg(absolute,23px,25px,14px,14px,'./../../public/imgs/icon-close.png');
         transition: transform .3s;
+        // 当鼠标移动到叉号上面，会放大1.5倍，过渡时间是0.3秒
         &:hover{
           transform: scale(1.5);
         }
       }
     }
+    // 弹框内容
     .modal-body{
       padding:42px 40px 54px;
       font-size:14px;
     }
+    // 弹框底部
     .modal-footer{
       height: 82px;
       line-height: 82px;

@@ -8,39 +8,42 @@
         <!-- 左侧菜单 -->
         <div class="nav-menu">
           <ul class="menu-wrap">
+            <!-- 分类商品栏 -->
             <li class="menu-item">
-              <a href="javascript:;">手机 电话卡</a>
+              <a href="javascript:;">女装热销分类</a>
               <div class="children">
+                <!-- 当做数组，横向循环6次 -->
                 <ul v-for="(item,i) in menuList" v-bind:key="i">
+                <!-- 纵向循环4次 -->
                   <li v-for="(sub,j) in item" v-bind:key="j">
                     <a v-bind:href="sub?'/#/product/'+sub.id:''">
-                      <img v-bind:src="sub?sub.img:'../../public/imgs/item-box-1.png'" alt="">
-                      {{sub?sub.name:'小米9'}}
+                      <img v-bind:src="sub?sub.img:'https://gdp.alicdn.com/tps/i2/T1k2HJXexjXXauUnsh-180-180.png'" alt="">
+                      {{sub?sub.name:'笔墨山河'}}
                     </a>
                   </li>
                 </ul>
               </div>
             </li>
             <li class="menu-item">
-              <a href="javascript:;">电视 盒子</a>
-            </li>===
-            <li class="menu-item">
-              <a href="javascript:;">笔记本 平板</a>
+              <a href="javascript:;">女鞋/箱包</a>
             </li>
             <li class="menu-item">
-              <a href="javascript:;">家电 插线板</a>
+              <a href="javascript:;">金石/配饰</a>
             </li>
             <li class="menu-item">
-              <a href="javascript:;">出行 穿戴</a>
+              <a href="javascript:;">护肤彩妆/个护</a>
             </li>
             <li class="menu-item">
-              <a href="javascript:;">智能 路由器</a>
+              <a href="javascript:;">运动户外</a>
             </li>
             <li class="menu-item">
-              <a href="javascript:;">电源 配件</a>
+              <a href="javascript:;">美容/护理</a>
             </li>
             <li class="menu-item">
-              <a href="javascript:;">生活 箱包</a>
+              <a href="javascript:;">养生保健</a>
+            </li>
+            <li class="menu-item">
+              <a href="javascript:;">居家用品</a>
             </li>
           </ul>
         </div>
@@ -53,6 +56,7 @@
           <!-- Optional controls -->
           <!-- 分页器 -->
           <div class="swiper-pagination"  slot="pagination"></div>
+          <!-- 左右箭头 -->
           <div class="swiper-button-prev" slot="button-prev"></div>
           <div class="swiper-button-next" slot="button-next"></div>
         </swiper>
@@ -60,20 +64,21 @@
       <!-- 广告位 -->
       <div class="ads-box">
         <a v-bind:href="'/#/product/'+item.id" v-for="(item,index) in adsList" v-bind:key="index">
+            <!-- v-lazy会自动封装src -->
           <img v-lazy="item.img" alt="">
         </a>
       </div>
 
       <div class="banner">
         <a href="/#/product/30">
-          <img v-lazy="'../../public/imgs/banner-1.png'" alt="">
+          <img v-lazy="'https://h2.appsimg.com/b.appsimg.com/upload/mst/2023/05/19/30/ef5e78119e17838134ff4323197661ba.jpg!75.webp'" alt="">
         </a>
       </div>
     </div>
     <!-- 商品 -->
     <div class="product-box">
       <div class="container">
-        <h2>手机</h2>
+        <h2>好物推荐</h2>
         <div class="wrapper">
           <div class="banner-left">
             <a href="/#/product/35"><img v-lazy="'../../public/imgs/mix-alpha.jpg'" alt=""></a>
@@ -81,6 +86,7 @@
           <div class="list-box">
             <div class="list" v-for="(arr,i) in phoneList" v-bind:key="i">
               <div class="item" v-for="(item,j) in arr" v-bind:key="j">
+                <!-- 给新品加判断条件 -->
                 <span v-bind:class="{'new-pro':j%2==0}">新品</span>
                 <div class="item-img">
                   <img v-lazy="item.mainImage" alt="">
@@ -97,6 +103,7 @@
       </div>
     </div>
     <service-bar></service-bar>
+    <!-- 模态框-弹窗 -->
     <modal 
       title="提示" 
       sureText="查看购物车" 
@@ -106,6 +113,9 @@
       v-on:submit="goToCart"
       v-on:cancel="showModal=false"
       >
+      <!-- submit是自定义事件，点击提交之后从model.vue提交到index.vue，
+        接收事件时，确定事件就跳转到购物车，取消事件就隐藏弹窗 -->
+      <!-- 用模板定义弹框组件，用插槽来定义弹窗名称-body -->
       <template v-slot:body>
         <p>商品添加成功！</p>
       </template>
@@ -142,10 +152,10 @@ import 'swiper/css/swiper.css'
               },
         //   分页器
           pagination: {
-              el: '.swiper-pagination',
+            el: '.swiper-pagination',
             // 点击下方小圆点就可以跳转到图片了
             clickable:true
-              },
+          },
           // 前进后退 的导航，左右箭头
           navigation: {
             nextEl: '.swiper-button-next',
@@ -156,30 +166,88 @@ import 'swiper/css/swiper.css'
         slideList:[
             {
             // 有id的需要跳转
-            id:'42',
-            img:'../../public/imgs/slider/slide-1.jpg'
+            id:'',
+            img:'https://b.appsimg.com/upload/momin/2023/06/30/15/1688119689001.jpg'
           },
           {
-            id:'45',
-            img:'../../public/imgs/slider/slide-2.jpg'
+            id:'',
+            img:'https://b.appsimg.com/upload/momin/2023/06/28/50/1687940476973.jpg'
           },
           {
-            id:'46',
-            img:'../../public/imgs/slider/slide-3.jpg'
+            id:'',
+            img:'https://h2.appsimg.com/a.appsimg.com/upload/brand/upcb/2023/05/01/93/ias_da6b7f9e78adc4c08b42eb07746f2a4e_1135x545_85.jpg'
           },
             {
             // 无id不跳转
             id:'',
-            img:'../../public/imgs/slider/slide-4.jpg'
+            img:'https://h2.appsimg.com/a.appsimg.com/upload/brand/upcb/2023/06/28/7/ias_1687942517356664569_1135x545_85.jpg'
           },
           {
             id:'',
-            img:'../../public/imgs/slider/slide-1.jpg'
+            img:'https://h2.appsimg.com/a.appsimg.com/upload/brand/upcb/2023/05/30/114/ias_47e0a4687d0db7d857ad8d33106d0d97_1135x545_85.jpg'
+            },
+          {
+            id:'',
+            img:'https://h2.appsimg.com/a.appsimg.com/upload/brand/upcb/2023/06/30/126/ias_1688119192678316611_1135x545_85.jpg'
           }
         ],
         menuList:[
           [
             {
+              id:30,
+              img:'https://img.alicdn.com/imgextra/i4/2708303826/O1CN01TikVrO1e8MBqaigZr_!!2708303826.jpg',
+              name:'新中式-拾白',
+            },{
+              id:31,
+              img:'https://img.alicdn.com/imgextra/i1/205262565/O1CN01Vz6xiV1UookCEcCN8_!!205262565.jpg_400x400.jpg',
+              name:'新中式-素萝',
+            },{
+              id:32,
+              img:'https://gd1.alicdn.com/imgextra/i1/343229424/O1CN016QmVxO2JUFKlT8iwQ_!!343229424.jpg_400x400.jpg',
+              name:'新中式-仰世',
+            },{
+              id:33,
+              img:'https://img.alicdn.com/imgextra/i4/2903512110/O1CN01RczE4x1RSQOFXUqVd_!!2903512110.jpg_400x400.jpg',
+              name:'新中式-卿棠',
+            }
+          ],
+          [{
+              id:30,
+              img:'https://gdp.alicdn.com/bao/uploaded/i4/2200533449572/O1CN016JNlFE2Ka1xwdcqGs_!!2200533449572.png_310x310.jpg',
+              name:'盐甜系-小川',
+            },{
+              id:31,
+              img:'https://gd3.alicdn.com/imgextra/i3/2200824903503/O1CN01O3GJvB1bkQGwSMVVO_!!2200824903503.jpg_400x400.jpg',
+            //   img:'../../public/imgs/item-box-2.png',
+              name:'盐甜系-乔与花樽',
+            },{
+              id:32,
+              img:'https://img.alicdn.com/imgextra/i1/385335622/O1CN01chrVQQ1rOvUWEVNl4_!!385335622.jpg_400x400.jpg',
+              name:'盐甜系-芝士日',
+            },{
+              id:33,
+              img:'https://img.alicdn.com/imgextra/i2/2596637413/O1CN01LFIGTp24dCrBVN294_!!2596637413.jpg_400x400.jpg',
+              name:'盐甜系-鹿向南',
+                }],
+            [{
+              id:30,
+              img:'https://gd2.alicdn.com/imgextra/i4/36174144/O1CN01tCWqNg1gU09495hLk_!!36174144.jpg_400x400.jpg',
+              name:'轻文艺-两人出品',
+            },{
+              id:31,
+              img: 'https://img.alicdn.com/bao/uploaded/i4/392243499/O1CN01YBMAHC1biagkBnRrX_!!392243499.jpg_310x310.jpg',
+            //   https://img.alicdn.com/imgextra/i2/392243499/O1CN01DGuii81biafDC8M3c_!!392243499.jpg_400x400.jpg
+              name:'轻文艺-远家',
+            },{
+              id:32,
+              img:'https://img.alicdn.com/bao/uploaded/i4/38656902/O1CN01o4ZxkS20rATxRAOBQ_!!38656902.jpg_240x240.jpg',
+              name:'轻文艺-无谓',
+            },{
+              id:33,
+              img:'https://img.alicdn.com/bao/uploaded/i2/1090075020/O1CN01N7TEIQ1mxD4w4fnXK_!!1090075020.jpg_240x240.jpg',
+              name:'轻文艺-小耳',
+                }],
+            [{
               id:30,
               img:'../../public/imgs/item-box-1.png',
               name:'小米CC9',
@@ -195,49 +263,72 @@ import 'swiper/css/swiper.css'
               id:33,
               img:'../../public/imgs/item-box-4.jpg',
               name:'移动4G专区',
-            }
-          ],
-          [0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0]
+            }],[0,0,0,0],[0,0,0,0]
         ],
         adsList:[
           {
             id:33,
-            img:'../../public/imgs/ads/ads-1.png'
+            img:'https://h2.appsimg.com/b.appsimg.com/upload/momin/2023/06/28/124/1687935916573_756x500_90.jpg'
           },{
             id:48,
-            img:'../../public/imgs/ads/ads-2.jpg'
+            img:'https://h2.appsimg.com/b.appsimg.com/upload/momin/2023/06/28/168/1687935791089_756x500_90.jpg'
           },{
             id:45,
-            img:'../../public/imgs/ads/ads-3.png'
+            img:'https://h2.appsimg.com/b.appsimg.com/upload/momin/2023/06/28/185/1687935796417_756x500_90.jpg'
           },{
             id:47,
-            img:'../../public/imgs/ads/ads-4.jpg'
+            img:'https://h2.appsimg.com/b.appsimg.com/upload/momin/2023/06/28/124/1687935916573_756x500_90.jpg'
           }
         ],
-        phoneList:[],
+        phoneList:[{
+                "id": 1,
+                "categoryId": 3,
+                "name": "iphone7",
+                "subtitle": "双十一促销",
+                "mainImage": "mainimage.jpg",
+                "status":1,
+                "price": 7199.22
+            },
+            {
+                "id": 2,
+                "categoryId": 2,
+                "name": "oppo R8",
+                "subtitle": "oppo促销进行中",
+                "mainImage": "mainimage.jpg",
+                "status":1,
+                "price": 2999.11
+              }],
+            // 默认不显示弹框，只有在点击时才显示
         showModal:false
       }
     },
-    mounted(){
+    mounted() {
+    // 初始化商品
       this.init();
     },
-    methods:{
+    methods: {
+        // 获取商品列表
       init(){
         this.axios.get('/products',{
-          params:{
-            categoryId:100012,
+            params: {
+            // 商品品类
+                categoryId: 100012,
+            // 要取过来的商品个数，原本的6个加现在需要的8个
             pageSize:14
           }
-        }).then((res)=>{
+        }).then((res) => {
+            // slice不会改变原数组
           res.list = res.list.slice(6,14);
           this.phoneList = [res.list.slice(0,4),res.list.slice(4,8)];
         })
-      },
+        },
+    //   点击添加购物车,将商品id添加到购物车
       addCart(id){
         this.axios.post('/carts',{
           productId:id,
           selected: true
-        }).then((res)=>{
+        }).then((res) => {
+            // 显示弹框
           this.showModal = true;
           this.$store.dispatch('saveCartCount',res.cartTotalQuantity);
         });
@@ -253,6 +344,7 @@ import 'swiper/css/swiper.css'
   @import './../assets/scss/mixin.scss';
   .index{
     // 轮播图
+    // 一层层嵌套，避免重名造成混乱
     .swiper-box{
       .nav-menu{
         position:absolute;

@@ -4,18 +4,20 @@
     <!-- logo -->
     <div class="footer-logo">
       <img src="../../public/imgs/logo-footer.png" alt="">
-      <p>小米商城</p>
+      <p>果壳里 超购商城</p>
     </div>   
     <!-- 底部链接           -->
     <div class="footer-link">
-      <a href="https://www.imooc.com/u/1343480" target="_blank">河畔一角主页</a><span>|</span>
-      <a href="https://coding.imooc.com/class/113.html" target="_blank">Vue全栈课程</a><span>|</span>
-      <a href="https://coding.imooc.com/class/236.html" target="_blank">React全家桶课程</a><span>|</span>
-      <a href="https://coding.imooc.com/class/343.html" target="_blank">微信支付专项课程</a><span>|</span>
-      <a href="https://coding.imooc.com/class/392.html" target="_blank">配套课程：Java通用型支付+电商平台双系统实战</a>
+      <a href="https://www.tmall.com/?spm=a1z10.1-b-s.0.0.4ed55f3btiVhRW" target="_blank">果壳里天猫店</a><span>|</span>
+      <a href="https://rulechannel.tmall.com/#/" target="_blank">果壳里平台规则</a><span>|</span>
+      <a href="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/f516fe9e2c01.html" target="_blank">儿童信息保护规则</a><span>|</span>
+      <a href="https://m.mi.com/support/module?id=63&headless=1" target="_blank">商家隐私政策</a><span>|</span>
+      <a href="https://rulechannel.tmall.com/?type=detail&ruleId=20001254&cId=1373#/rule/detail?ruleId=20001254&cId=1373" target="_blank">果壳里商城用户协议</a><span>|</span>
+      <a href="https://static.mi.com/feedback/" target="_blank">问题反馈</a>
     </div>
     <!-- 版权 -->
-    <div class="copyright">Copyright ©2023 <span class="domain">nushelly.futuremi.com</span> All Rights Reserved.</div>
+    <div class="copyright">Copyright ©2023 <span class="domain">nushelly.prettygirl.com</span> All Rights Reserved.</div>
+    <div>违法和不良信息举报电话：171-5104-4404 知识产权侵权投诉 本网站所列数据，除特殊说明，所有数据均出自本实验室测试</div>
   </div>
 </template>
 <script>
