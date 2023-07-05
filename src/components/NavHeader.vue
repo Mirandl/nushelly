@@ -19,9 +19,9 @@
         <!-- 右侧用户信息 -->
         <div class="topbar-user">
             <!-- 如果有username就加载用户名 -->
-          <a href="javascript:;" v-if="username">{{username}}那菈</a>
+          <a href="javascript:;" v-if="username">{{username}}那菈 您好！</a>
           <!-- 如果没有用户名才显示登录 -->
-          <a href="javascript:;" v-if="!username" @click="login">登录</a>
+          <a class="login" href="javascript:;" v-if="!username" @click="login">登录</a>
           <!-- 如果有username就加载退出-->
           <a href="javascript:;" v-if="username" @click="logout">退出</a>
           <!-- 如果有username就加载我的订单 -->
@@ -35,8 +35,15 @@
       <div class="container">
         <!-- 左侧logo可视化区 -->
         <div class="header-logo">
-        <!-- 点击logo跳转 -->
-          <a href="/#/index"></a>
+          <div class="iconfont icon-shezhi icon">
+            <!-- 点击logo跳转 -->
+            <a href="/#/index"></a>
+            <div class="dialaing">
+                <ul>
+                    <li>欢迎进壳~</li>
+                </ul>
+            </div>
+          </div>
         </div>
         <div class="header-menu">
           <div class="item-menu">
@@ -185,10 +192,10 @@
         // 与后端交互，获取数据
     // 登录跳转
       login(){
-        this.$router.push('/#/login');
+        this.$router.push('../login');
       },
       getProductList(){
-        this.axios.get('/products',{
+        this.axios.get('../products',{
             params: {
             // 传参
             categoryId:'100012',
@@ -229,6 +236,7 @@
   @import './../assets/scss/mixin.scss';
   @import './../assets/scss/config.scss';
   .header{
+    background-color: #fff;
     .nav-topbar{
       height:39px;
       line-height:39px;
@@ -242,6 +250,10 @@
           color:$colorG;
           // 增加间距
           margin-right:17px;
+        }
+        .login:hover {
+            font-weight: bold;
+            color:$colorA;
         }
         .my-cart{
           width:110px;
@@ -357,19 +369,22 @@
           width:319px;
           .wrapper{
             height:50px;
-            border:1px solid #E0E0E0;
+            border:2px solid $colorA;
             display:flex;
             // 居中
             align-items:center;
+            border-radius: 25px;
             input{
               border:none;
               // 将边框和内边距的值包含在 width 内
               box-sizing: border-box;
-              border-right:1px solid #E0E0E0;
-              width:264px;
+              border-right:2px solid $colorA;
+              width:233px;
               height:50px;
               // 输入框左侧有段距离
-              padding-left:14px;
+              padding-left:7px;
+              background-color: #fff;
+              margin-left: 24px;
             }
             a{
               @include bgImg(18px,18px,'./../../public/imgs/icon-search.png');

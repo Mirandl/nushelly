@@ -1,7 +1,9 @@
 <template>
   <div class="login">
     <div class="container">
-      <a href="/#/index"><img src="../../public/imgs/login-logo.png" alt=""></a>
+      <a href="/#/index">
+        <img src="../../public/imgs/guo-login.png" alt="">
+    </a>
     </div>
     <div class="wrapper">
       <div class="container">
@@ -15,7 +17,9 @@
           <div class="input">
             <input type="password" placeholder="请输入密码" v-model="password">
           </div>
+           <input class="padd" type="checkbox">&nbsp;同意协议并注册<a href="#">《知晓用户协议》</a>
           <div class="btn-box">
+            <!-- v-on:click 绑定点击事件-->
             <a href="javascript:;" class="btn" @click="login">登录</a>
           </div>
           <div class="tips">
@@ -26,61 +30,73 @@
       </div>
     </div>
     <div class="footer">
-      <div class="footer-link">
-        <a href="https://www.imooc.com/u/1343480" target="_blank">河畔一角主页</a><span>|</span>
-        <a href="https://coding.imooc.com/class/113.html" target="_blank">Vue全栈课程</a><span>|</span>
-        <a href="https://coding.imooc.com/class/236.html" target="_blank">React全家桶课程</a><span>|</span>
-        <a href="https://coding.imooc.com/class/343.html" target="_blank">微信支付专项课程</a><span>|</span>
-        <a href="https://coding.imooc.com/class/392.html" target="_blank">配套课程：Java通用型支付+电商平台双系统实战</a>
-      </div>
-      <p class="copyright">Copyright ©2020 mi.futurefe.com All Rights Reserved.</p>
+    <div class="footer-link">
+      <a href="https://www.tmall.com/?spm=a1z10.1-b-s.0.0.4ed55f3btiVhRW" target="_blank">果壳里天猫店</a><span>|</span>
+      <a href="https://rulechannel.tmall.com/#/" target="_blank">果壳里平台规则</a><span>|</span>
+      <a href="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/f516fe9e2c01.html" target="_blank">儿童信息保护规则</a><span>|</span>
+      <a href="https://m.mi.com/support/module?id=63&headless=1" target="_blank">商家隐私政策</a><span>|</span>
+      <a href="https://rulechannel.tmall.com/?type=detail&ruleId=20001254&cId=1373#/rule/detail?ruleId=20001254&cId=1373" target="_blank">果壳里商城用户协议</a><span>|</span>
+      <a href="https://static.mi.com/feedback/" target="_blank">问题反馈</a>
+    </div>
+    <!-- 版权 -->
+    <div class="copyright">Copyright ©2023 <span class="domain">nushelly.prettygirl.com</span> All Rights Reserved.</div>
+    <div>违法和不良信息举报电话：171-5104-4404 知识产权侵权投诉 本网站所列数据，除特殊说明，所有数据均出自本实验室测试</div>
     </div>
   </div>
 </template>
 <script>
 import { mapActions } from 'vuex';
 export default {
-  name: 'n-login',
+  name: 'login',
   data(){
     return {
       username:'',
       password:'',
       userId:''
     }
-  },
-  methods:{
+    },
+//   提交用户信息之后应该会产生一个token供在服务端和浏览器端通信，这里使用id来辨识身份
+    methods: {
+    // 登录
     login(){
-      let { username,password } = this;
+      let { username,password } = this;// 把this解构
       if(!username || !password){
         this.$message.error('请输入正确的用户名和密码');
         return;
       }
       this.axios.post('/user/login',{
-        username,
+        username,//当key和value名称一样时，就可以简写username:username
         password
-      }).then((res)=>{
+      }).then((res) => {
+        // 登录，保存用户名
+        // expires设置cookie过期时间，session表示关闭对话框就过期了，也可以设置1M一个月过期
         this.$cookie.set('userId',res.id,{expires:'Session'});
         // this.$store.dispatch('saveUserName',res.username);
+        // 保存用户名-注册信息
         this.saveUserName(res.username);
+        // 点击登录之后跳转到首页
         this.$router.push({
           name:'index',
           params:{
             from:'login'
           }
-        });
+        });// 由于main.js已经有捕获异常的代码，这里就不写catch了
       })
     },
-    ...mapActions(['saveUserName']),
+        ...mapActions(['saveUserName']),
+    // 注册
     register(){
-      this.$message.success('功能暂未开发');
-      return;
-      /*this.axios.post('/user/register',{
+      /* this.$message.success('功能暂未开发');
+      return; */
+    //   表单提交使用post请求
+      this.axios.post('/user/register',{
         username:'admin1',
         password:'admin1',
         email:'admin1@163.com'
-      }).then(()=>{
+      }).then(() => {
+        // elementUI指令
         this.$message.success('注册成功');
-      })*/
+      })
     }
   }
 }
@@ -90,15 +106,18 @@ export default {
   &>.container{
     height:113px;
     img{
-      width:auto;
-      height:100%;
+      margin-top: 20px;
+      width:200px;
+      height: auto;
     }
   }
   .wrapper{
-    background:url('../../public/imgs/login-bg.jpg') no-repeat center;
+    // background:url('../../public/imgs/login-bg.jpg') no-repeat center;
+    background:url('https://b.appsimg.com/upload/momin/2020/12/14/15/1607915393371.jpg') no-repeat center;
     .container{
       height:576px;
       .login-form{
+        // 将padding限制在box内容内，不能超出
         box-sizing: border-box;
         padding-left: 31px;
         padding-right: 31px;
@@ -162,7 +181,7 @@ export default {
     height:100px;
     padding-top:60px;
     color:#999999;
-    font-size:16px;
+    font-size:12px;
     text-align:center;
     .footer-link{
       a{
@@ -175,6 +194,7 @@ export default {
     }
     .copyright{
       margin-top:13px;
+      margin-bottom: 10px;
     }
   }
 }

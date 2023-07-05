@@ -3,7 +3,7 @@
   <div class="footer">
     <!-- logo -->
     <div class="footer-logo">
-      <img src="../../public/imgs/logo-footer.png" alt="">
+      <img src="../../public/imgs/guo-logo.png" alt="">
       <p>果壳里 超购商城</p>
     </div>   
     <!-- 底部链接           -->
@@ -26,20 +26,20 @@
   }
 </script>
 <style lang="scss" scoped>
+  @import './../assets/scss/config.scss';
 // scoped就是设置当前局部组件的样式，只能在当前组件起作用,就是别的组件修改当前组件的时候默认不被修改！
   .footer{
-    height:234px;
-    border-top:4px solid #FF6600;
+    height:290px;
+    border-top:4px solid $colorA;
     background-color:#333;
     color:#999;
     font-size:16px;
     text-align:center;
     .footer-logo{
-      margin-top:46px;
-      margin-bottom:31px;
+      margin-top:27px;
+      margin-bottom:20px;
       img{
-        width:53px;
-        height:36px;
+        width:120px;
         margin-bottom:13px;
       }
     }
@@ -54,8 +54,9 @@
       margin-bottom:13px;
     }
     .copyright{
+        margin-bottom: 10px;
       .domain{
-        color:#FF6600;
+        color:$colorA;
       }
     }
   }

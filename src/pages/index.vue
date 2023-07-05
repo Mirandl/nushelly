@@ -12,14 +12,16 @@
             <li class="menu-item">
               <a href="javascript:;">女装热销分类</a>
               <div class="children">
-                <!-- 当做数组，横向循环6次 -->
+                <!-- 当做数组，横向循环4次 -->
                 <ul v-for="(item,i) in menuList" v-bind:key="i">
                 <!-- 纵向循环4次 -->
                   <li v-for="(sub,j) in item" v-bind:key="j">
-                    <a v-bind:href="sub?'/#/product/'+sub.id:''">
-                      <img v-bind:src="sub?sub.img:'https://gdp.alicdn.com/tps/i2/T1k2HJXexjXXauUnsh-180-180.png'" alt="">
-                      {{sub?sub.name:'笔墨山河'}}
-                    </a>
+                    <div class="border-radius">
+                        <a v-bind:href="sub?'/#/product/'+sub.id:''">
+                        <img v-bind:src="sub?sub.img:'https://gdp.alicdn.com/tps/i2/T1k2HJXexjXXauUnsh-180-180.png'" alt="">
+                        {{sub?sub.name:'笔墨山河'}}
+                        </a>
+                    </div>
                   </li>
                 </ul>
               </div>
@@ -127,10 +129,9 @@
   import Modal from './../components/Modal'
   import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
   //   从已安装的插件模板中找到这个cs样式文件
-// import 'swiper/dist/css/swiper.css'
-import 'swiper/css/swiper.css'
+  import 'swiper/css/swiper.css'
   export default{
-    name:'n-index',
+    name:'index',
     components:{
       Swiper,
       SwiperSlide,
@@ -148,8 +149,8 @@ import 'swiper/css/swiper.css'
         //   effect:'cube',
           effect:'fade',
           fadeEffect: {
-            crossFade: true,
-              },
+            crossFade: true
+          },
         //   分页器
           pagination: {
             el: '.swiper-pagination',
@@ -164,12 +165,11 @@ import 'swiper/css/swiper.css'
           },
         // 参与轮播的图片
         slideList:[
-            {
             // 有id的需要跳转
-            id:'',
+            {id:'',
             img:'https://b.appsimg.com/upload/momin/2023/06/30/15/1688119689001.jpg'
           },
-          {
+            {
             id:'',
             img:'https://b.appsimg.com/upload/momin/2023/06/28/50/1687940476973.jpg'
           },
@@ -189,7 +189,7 @@ import 'swiper/css/swiper.css'
           {
             id:'',
             img:'https://h2.appsimg.com/a.appsimg.com/upload/brand/upcb/2023/06/30/126/ias_1688119192678316611_1135x545_85.jpg'
-          }
+          } 
         ],
         menuList:[
           [
@@ -246,7 +246,26 @@ import 'swiper/css/swiper.css'
               id:33,
               img:'https://img.alicdn.com/bao/uploaded/i2/1090075020/O1CN01N7TEIQ1mxD4w4fnXK_!!1090075020.jpg_240x240.jpg',
               name:'轻文艺-小耳',
-                }],[0,0,0,0],[0,0,0,0]
+                }],
+            [
+            {
+              id:30,
+              img:'https://img.alicdn.com/imgextra/i4/2708303826/O1CN01TikVrO1e8MBqaigZr_!!2708303826.jpg',
+              name:'新中式-拾白',
+            },{
+              id:31,
+              img:'https://img.alicdn.com/imgextra/i1/205262565/O1CN01Vz6xiV1UookCEcCN8_!!205262565.jpg_400x400.jpg',
+              name:'新中式-素萝',
+            },{
+              id:32,
+              img:'https://gd1.alicdn.com/imgextra/i1/343229424/O1CN016QmVxO2JUFKlT8iwQ_!!343229424.jpg_400x400.jpg',
+              name:'新中式-仰世',
+            },{
+              id:33,
+              img:'https://img.alicdn.com/imgextra/i4/2903512110/O1CN01RczE4x1RSQOFXUqVd_!!2903512110.jpg_400x400.jpg',
+              name:'新中式-卿棠',
+            }
+            ]
         ],
         adsList:[
           {
@@ -326,13 +345,14 @@ import 'swiper/css/swiper.css'
   @import './../assets/scss/config.scss';
   @import './../assets/scss/mixin.scss';
   .index{
+    background-color: #fff;
     // 轮播图
     // 一层层嵌套，避免重名造成混乱
     .swiper-box{
       .nav-menu{
         position:absolute;
         width:264px;
-        height:451px;
+        height:428px;
         z-index:9;
         padding:26px 0;
         background-color:#55585a7a;
@@ -364,7 +384,7 @@ import 'swiper/css/swiper.css'
             .children{
               display:none;
               width:962px;
-              height:451px;
+              height:428px;
               background-color:$colorG;
               position:absolute;
               top:0;
@@ -372,23 +392,64 @@ import 'swiper/css/swiper.css'
               border:1px solid $colorH;
               ul{
                 display:flex;
+                padding-top: 5px;
                 justify-content:space-between;
-                height:75px;
+                height:100px;
                 li{
-                  height:75px;
-                  line-height:75px;
+                  height:100px;
+                  line-height:100px;
                   flex:1;
                   padding-left:23px;
                 }
-                a{
-                  color:$colorB;
-                  font-size:14px;
-                }
-                img{
-                  width:42px;
-                  height:35px;
-                  vertical-align:middle;
-                  margin-right:15px;
+
+                .border-radius {
+                    position: relative;
+                    width: 210px;
+                    height: 65px;
+                    margin: auto;
+                    border: 1px solid $colorA;
+
+                    &::before,
+                    &::after {
+                        content: "";
+                        position: absolute;
+                        width: 20px;
+                        height: 20px;
+                        transition: .3s ease-in-out;
+                    }
+                    
+                    &::before {
+                        top: -5px;
+                        left: -5px;
+                        border-top: 1px solid $colorA;
+                        border-left: 1px solid $colorA;
+                    }
+                    
+                    &::after {
+                        right: -5px;
+                        bottom: -5px;
+                        border-bottom: 1px solid $colorA;
+                        border-right: 2px solid $colorA;
+                        z-index:0;
+                    }
+
+                    &:hover::before,
+                    &:hover::after {
+                        width: calc(100% + 9px);
+                        height: calc(100% + 9px);
+                    }
+
+                    a{
+                    color:$colorB;
+                    font-size:14px; 
+                    }
+
+                    img{
+                    width:55px;
+                    height:75px;
+                    vertical-align:middle;
+                    margin-right:15px;
+                    }
                 }
               }
             }
@@ -396,7 +457,7 @@ import 'swiper/css/swiper.css'
         }
       }
       .swiper-container {
-        height: 451px;
+        height: 428px;
         .swiper-button-prev{
           left:274px;
         }

@@ -23,14 +23,20 @@ axios.defaults.timeout = 8000;
 // axios.defaults.baseURL = env.baseURL;
 // 接口错误拦截
 axios.interceptors.response.use(function(response){
-  let res = response.data;
+    let res = response.data;
+    let path = location.hash;// 带#的就是hash路由，我们获取这个路由
   if(res.status == 0){
     return res.data;
-  }else if(res.status == 10){
-    window.location.href = '/#/login';
+  } else if (res.status == 10) {
+      if (path != '#/index') {
+          //只有首页可以不登录浏览，当打开其他界面时都会跳转到登录页面先进行登录
+          //如果当前已经在首页，就不需要跳转到登录页面
+          window.location.href = '/#/login';
+      }
     return Promise.reject(res);
   }else{
-    Message.warning(res.msg);
+      Message.warning(res.msg);
+    // 抛出异常，将res抛出去，使得之后需要以res为条件的代码都不能执行
     return Promise.reject(res);
   }
 },(error)=>{
@@ -40,7 +46,7 @@ axios.interceptors.response.use(function(response){
 });
 
 Vue.use(VueAxios,axios);
-Vue.use(VueCookie);
+Vue.use(VueCookie);// 加载cookie
 Vue.use(VueLazyLoad, {
     // 全局配置--加载动画
     // 图片有固定分辨率，超出分辨率会失真，而svg矢量图不管放多大多小都不会失真，但制作成本较高
