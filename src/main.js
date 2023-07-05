@@ -6,6 +6,7 @@ import VueLazyLoad from 'vue-lazyload'
 import VueCookie from 'vue-cookie'
 import { Message } from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
+// 引入store，默认读取其中的index.js对象--vuex
 import store from './store'
 import App from './App.vue'
 // import env from './env'
@@ -56,6 +57,7 @@ Vue.prototype.$message = Message;
 Vue.config.productionTip = false
 
 new Vue({
+  // 将vuex实例对象放进来
   store,
   router,
   render: h => h(App),
