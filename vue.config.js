@@ -11,7 +11,8 @@ module.exports = {
     proxy:{
         '/api': {
         //  代理跨域的如果任务请求不同，直接改这里
-        target:'https://mall-pre.springboot.cn',
+        // target:'https://mall-pre.springboot.cn',
+        target:'http://localhost:8080',
         changeOrigin:true,
         pathRewrite:{
           '/api':''

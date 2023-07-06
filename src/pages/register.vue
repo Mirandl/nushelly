@@ -1,8 +1,8 @@
 <template>
   <div class="register">
     <div class="wrapper">
-      <div class="logo"><img src="https://account.xiaomi.com/static/res/349d9c1/account-static/respassport/acc-2014/img/milogo.png" alt=""></div>
-      <h2>注册小米帐号</h2>
+      <div class="logo"><img src="../../public/imgs/1.png" alt=""></div>
+      <h2>注册 果壳里 帐号</h2>
       <div class="regbox">
         <div class="input">
           <input type="text" placeholder="请输入注册帐号" v-model="username">
@@ -18,7 +18,7 @@
         </div>
       </div>
       <p class="tip">
-        已阅读并同意：小米 <a href="#">用户协议</a>和 <a href="#">隐私政策</a>
+        已阅读并同意：果壳里 <a href="#">用户协议</a>和 <a href="#">隐私政策</a>
       </p>
     </div>
     <nav-footer></nav-footer>
@@ -27,7 +27,7 @@
 <script>
 import NavFooter from './../components/NavFooter'
 export default {
-  name: 'n-login',
+  name: 'register',
   data(){
     return {
       username:'',
@@ -66,7 +66,7 @@ export default {
         password,
         email
       }).then(()=>{
-        this.$message.info('注册成功，请去登录');
+        this.$message.info('注册成功，请登录');
         this.username = ''
         this.password = ''
         this.email = ''
@@ -106,6 +106,9 @@ export default {
       }
     }
     .logo{
+      display: inline-block;
+      margin-left: 375px;
+      margin-top: 20px;
       text-align: center;
       padding-bottom: 40px;
     }

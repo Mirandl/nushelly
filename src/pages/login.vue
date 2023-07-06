@@ -24,7 +24,7 @@
           </div>
           <div class="tips">
             <div class="sms" @click="register">手机短信登录/注册</div>
-            <!-- <div class="reg">立即注册<span>|</span>忘记密码？</div> -->
+            <div class="reg">立即注册<span>|</span>忘记密码？</div>
           </div>
         </div>
       </div>
@@ -61,7 +61,7 @@ export default {
     login(){
       let { username,password } = this;// 把this解构
       if(!username || !password){
-        this.$message.error('请输入正确的用户名和密码');
+        this.$message.error('请输入您的用户名和密码');
         return;
       }
       this.axios.post('/user/login',{
@@ -70,25 +70,30 @@ export default {
       }).then((res) => {
         // 登录，保存用户名
         // expires设置cookie过期时间，session表示关闭对话框就过期了，也可以设置1M一个月过期
-        this.$cookie.set('userId',res.id,{expires:'Session'});
+        // this.$cookie.set('userId',res.id,{expires:'Session'});
+        this.$cookie.set('userId',res.id,{expires:'1M'});
+        // 存储username--与下面的mapaction等同
         // this.$store.dispatch('saveUserName',res.username);
         // 保存用户名-注册信息
-        this.saveUserName(res.username);
+        // this.saveUserName(res.username);
         // 点击登录之后跳转到首页
-        this.$router.push({
+        this.$router.push('/index');
+        /*this.$router.push({
           name:'index',
           params:{
             from:'login'
           }
-        });// 由于main.js已经有捕获异常的代码，这里就不写catch了
+        });*/
+        // 由于main.js已经有捕获异常的代码，这里就不写catch了
       })
     },
+    // 当变量多了之后可以用map数组辅助变量自动传参
         ...mapActions(['saveUserName']),
     // 注册
     register(){
       /* this.$message.success('功能暂未开发');
       return; */
-    //   表单提交使用post请求
+      // 表单提交使用post请求
       this.axios.post('/user/register',{
         username:'admin1',
         password:'admin1',
@@ -97,6 +102,7 @@ export default {
         // elementUI指令
         this.$message.success('注册成功');
       })
+      this.$router.push('register');
     }
   }
 }

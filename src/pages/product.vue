@@ -1,7 +1,10 @@
 <template>
   <div class="product">
+  <!-- 传入左侧的产品名称 -->
     <product-param v-bind:title="product.name">
+    <!-- 引入插槽--立即购买的功能 -->
       <template v-slot:buy>
+      <!-- btn代表button.scss中最小的按钮样式 -->
         <button class="btn" @click="buy">立即购买</button>
       </template>
     </product-param>
@@ -55,7 +58,7 @@
   import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
   import ProductParam from './../components/ProductParam'
   export default{
-    name:'n-product',
+    name:'product',
     components:{
       Swiper,
       SwiperSlide,

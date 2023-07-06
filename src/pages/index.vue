@@ -83,7 +83,7 @@
         <h2>好物推荐</h2>
         <div class="wrapper">
           <div class="banner-left">
-            <a href="/#/product/35"><img v-lazy="'../../public/imgs/mix-alpha.jpg'" alt=""></a>
+            <a href="/#/product/12"><img v-lazy="'./../../public/imgs/mix-alpha.jpg'" alt=""></a>
           </div>
           <div class="list-box">
             <div class="list" v-for="(arr,i) in phoneList" v-bind:key="i">
@@ -166,28 +166,28 @@
         // 参与轮播的图片
         slideList:[
             // 有id的需要跳转
-            {id:'',
+            {id:'1',
             img:'https://b.appsimg.com/upload/momin/2023/06/30/15/1688119689001.jpg'
           },
             {
-            id:'',
+            id:'2',
             img:'https://b.appsimg.com/upload/momin/2023/06/28/50/1687940476973.jpg'
           },
           {
-            id:'',
+            id:'3',
             img:'https://h2.appsimg.com/a.appsimg.com/upload/brand/upcb/2023/05/01/93/ias_da6b7f9e78adc4c08b42eb07746f2a4e_1135x545_85.jpg'
           },
             {
             // 无id不跳转
-            id:'',
+            id:'4',
             img:'https://h2.appsimg.com/a.appsimg.com/upload/brand/upcb/2023/06/28/7/ias_1687942517356664569_1135x545_85.jpg'
           },
           {
-            id:'',
+            id:'5',
             img:'https://h2.appsimg.com/a.appsimg.com/upload/brand/upcb/2023/05/30/114/ias_47e0a4687d0db7d857ad8d33106d0d97_1135x545_85.jpg'
             },
           {
-            id:'',
+            id:'6',
             img:'https://h2.appsimg.com/a.appsimg.com/upload/brand/upcb/2023/06/30/126/ias_1688119192678316611_1135x545_85.jpg'
           } 
         ],
@@ -287,7 +287,7 @@
                 "categoryId": 3,
                 "name": "iphone7",
                 "subtitle": "双十一促销",
-                "mainImage": "mainimage.jpg",
+                "mainImage": "../../public/imgs/detail/phone-1.jpg",
                 "status":1,
                 "price": 7199.22
             },
@@ -326,7 +326,7 @@
         },
     //   点击添加购物车,将商品id添加到购物车
       addCart(id){
-        this.axios.post('/carts',{
+        this.axios.post('/cart',{
           productId:id,
           selected: true
         }).then((res) => {
@@ -336,7 +336,7 @@
         });
       },
       goToCart(){
-        this.$router.push('/cart');
+        this.$router.push('cart');
       }
     }
   }

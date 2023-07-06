@@ -9,7 +9,7 @@
   import ServiceBar from './../components/ServiceBar'
   import NavFooter from './../components/NavFooter'
   export default{
-    name:'n-order',
+    name:'order',
     data(){
       return {
         title:'',

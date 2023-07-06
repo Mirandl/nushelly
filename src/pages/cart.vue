@@ -59,7 +59,7 @@
   import ServiceBar from './../components/ServiceBar'
   import NavFooter from './../components/NavFooter'
   export default{
-    name:'n-index',
+    name:'index',
     components:{
       OrderHeader,
       ServiceBar,

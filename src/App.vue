@@ -25,7 +25,7 @@ export default {
     methods: {
     // 实时拉取用户信息
     getUser(){
-            this.axios.get('/user').then((res = {}) => {
+        this.axios.get('/user').then((res = {}) => {
         // 保存到vuex里面
         this.$store.dispatch('saveUserName',res.username);
       })

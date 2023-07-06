@@ -39,7 +39,7 @@
 </template>
 <script>
   export default{
-    name:'n-modal',
+    name:'modal',
     props:{
         // 弹框类型：小small、中middle、大large、表单form，
         // 在不同弹框中赋予不同的值即可，类似ios桌面小组件

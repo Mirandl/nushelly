@@ -162,6 +162,8 @@
         phoneList:[]
       }
     },
+    // 由于接口有延迟，接口读取比组件渲染要慢
+    // 通过计算函数，一旦变量发生变化就会重新调用方法
     computed:{
       /*username(){
         return this.$store.state.username;
@@ -192,7 +194,7 @@
         // 与后端交互，获取数据
     // 登录跳转
       login(){
-        this.$router.push('../login');
+        this.$router.push('login');
       },
       getProductList(){
         this.axios.get('../products',{

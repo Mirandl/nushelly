@@ -65,7 +65,7 @@ import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
 import ProductParam from './../components/ProductParam'
 import ServiceBar from './../components/ServiceBar';
 export default{
-  name:'n-detail',
+  name:'detail',
   data(){
     return {
       id:this.$route.params.id,//获取商品ID

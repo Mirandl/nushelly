@@ -5,7 +5,7 @@
 </template>
 <script>
   export default{
-    name:'n-loading'
+    name:'loading'
   }
 </script>
 <style lang="scss">

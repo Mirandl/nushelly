@@ -9,7 +9,7 @@
   import NavHeader from './../components/NavHeader'
   import NavFooter from './../components/NavFooter'
   export default{
-    name:'nav-home',
+    name:'home',
     components:{
       NavHeader,
       NavFooter
