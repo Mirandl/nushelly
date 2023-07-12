@@ -38,6 +38,7 @@
           </div>
           <div class="item-total">
             <div class="phone-info clearfix">
+                <!-- 可以根据上面鼠标选择的版本显示不同的信息 -->
               <div class="fl">{{product.name}} {{version==1?'6GB+64GB 全网通':'4GB+64GB 移动4G'}} 深灰色</div>
               <div class="fr">{{product.price}}元</div>
             </div>
@@ -68,9 +69,9 @@ export default{
   name:'detail',
   data(){
     return {
-      id:this.$route.params.id,//获取商品ID
+      id:this.$route.params.id,//抽取成公共方法，获取商品ID
       err:'',
-      version:1,//商品版本切换
+      version:1,//商品版本切换，默认是1
       product:{},//商品信息
       swiperOption:{
         autoplay:true,
@@ -88,18 +89,19 @@ export default{
     ServiceBar
   },
   mounted(){
-    this.getProductInfo();
+    this.getProductInfo();//获取商品信息
   },
   methods:{
-    getProductInfo(){
-      this.axios.get(`/products/${this.id}`).then((res)=>{
+      getProductInfo() {
+        // let id = this.$route.params.id; 在上面统一抽取
+        this.axios.get(`/products/${this.id}`).then((res)=>{
         this.product = res;
       })
     },
     addCart(){
-      this.axios.post('/carts',{
+      this.axios.post('/cart',{
         productId:this.id,
-        selected: true
+        selected: true // 默认选中
       }).then((res={cartProductVoList:0})=>{
         this.$store.dispatch('saveCartCount',res.cartTotalQuantity);
         // this.$router.push('/cart');
@@ -213,6 +215,7 @@ export default{
               height:14px;
               background-color:#666666;
             }
+            // 选中的颜色
             &.checked{
               border:1px solid #FF6600;
               color:#FF6600;

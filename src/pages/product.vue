@@ -44,9 +44,12 @@
         <p>后置960帧电影般超慢动作视频，将眨眼间的美妙展现得淋漓尽致！<br/>更能AI 精准分析视频内容，15个场景智能匹配背景音效。</p>
         <div class="video-bg" @click="showSlide='slideDown'"></div>
         <div class="video-box" v-show="showSlide">
+        <!-- 视频遮罩 -->
           <div class="overlay"></div>
+          <!-- 视频 -->
           <div class="video" v-bind:class="showSlide">
             <span class="icon-close" @click="closeVideo"></span>
+            <!-- html5支持video标签，设置autoplay自动播放，muted是静音输出，control开启视频相关控件 -->
             <video src="../../public/imgs/product/video.mp4" muted autoplay controls="controls"></video>
           </div>
         </div>
@@ -110,7 +113,7 @@
   .product{
     .content{
       .item-bg{
-        background:url('../../public/imgs/product/product-bg-1.png') no-repeat center;
+        background:url('../../public/imgs/product/product-bg-1.jpg') no-repeat center;
         height:718px;
         text-align:center;
         h2{
@@ -187,6 +190,7 @@
         }
         .video-box{
           .overlay{
+            // 遮罩用固定定位而不能是绝对定位
             @include position(fixed);
             background-color:#333333;
             opacity:.4;
@@ -213,11 +217,14 @@
             }
           }
           .video{
+            // 将视频固定在页面中间
             position:fixed;
             top:-50%;
             left:50%;
             transform:translate(-50%,-50%);
+            // 视频和遮罩都高于页面
             z-index:10;
+            // 整个视频组件宽高
             width:1000px;
             height:536px;
             opacity:1;
@@ -229,17 +236,22 @@
               animation:slideUp .6s linear;
             }
             .icon-close{
+              // 设置关闭按钮，绝对定位
               position:absolute;
               top:20px;
               right:20px;
               @include bgImg(20px,20px,'../../public/imgs/icon-close.png');
               cursor:pointer;
+              // 让按钮在视频上面，才可以点击
               z-index:11;
             }
             video{
+              // 视频填满视频组件
               width:100%;
               height:100%;
+              // 让视频覆盖整个窗口，视频在浏览器会默认有个边框，用cover会让视频填满整个窗口
               object-fit:cover;
+              // 取消默认的轮廓样式
               outline:none;
             }
           }

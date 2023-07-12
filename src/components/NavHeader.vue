@@ -162,7 +162,7 @@
         phoneList:[]
       }
     },
-    // 由于接口有延迟，接口读取比组件渲染要慢
+    // 用户名需要从app.vue中拉取，由于接口有延迟，接口读取比组件渲染要慢
     // 通过计算函数，一旦变量发生变化就会重新调用方法
     computed:{
       /*username(){
@@ -212,7 +212,7 @@
         })
       },
       getCartCount(){
-        this.axios.get('/carts/products/sum').then((res=0)=>{
+        this.axios.get('/cart/products/sum').then((res=0)=>{
           this.$store.dispatch('saveCartCount',res);
         })
       },

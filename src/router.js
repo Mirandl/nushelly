@@ -2,8 +2,11 @@ import Vue from 'vue'
 import Router from 'vue-router'
 // 组件习惯大写
 import Home from './pages/home'
-import Login from './pages/login'
+// import Login from './pages/login'
 import Index from './pages/index'
+/* 在component中定义完组件名字,还需要去通过import去引入组件.
+component:Home这种方法不推荐,虽然易理解，但缺点:
+webpack在打包的时候会把整个路由打包成一个js文件，如果页面一多，会导致这个文件非常大，加载缓慢 */
 // import Product from './pages/product'
 // import Detail from './pages/detail'
 // import Cart from './pages/cart'
@@ -15,6 +18,7 @@ import Index from './pages/index'
 // 通过vue加载路由插件
 Vue.use(Router);
 
+// 创建并暴露一个router
 export default new Router({
   routes:[
     {
@@ -24,15 +28,15 @@ export default new Router({
       redirect:'/index',
       children:[
         {
-          path: '/index',
+          path: 'index',
           name: 'index',
           component: Index,
         }, {
-          path: '/product/:id',
+          path: 'product/:id',
           name: 'product',
           component: () => import('./pages/product.vue')
         }, {
-          path: '/detail/:id',
+          path: 'detail/:id',
           name: 'detail',
           component: () => import('./pages/detail.vue')
         }
@@ -41,8 +45,8 @@ export default new Router({
     {
       path: '/login',
       name: 'login',
-    //   component: () => import('./pages/login.vue')
-      component: Login,
+      component: () => import('./pages/login.vue')
+    //   component: Login,
     },
     {
       path: '/register',

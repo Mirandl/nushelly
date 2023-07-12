@@ -127,14 +127,14 @@
 <script>
   import ServiceBar from './../components/ServiceBar'
   import Modal from './../components/Modal'
-  import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
+  import { swiper, swiperSlide } from 'vue-awesome-swiper'
   //   从已安装的插件模板中找到这个cs样式文件
-  import 'swiper/css/swiper.css'
+  import 'swiper/dist/css/swiper.css'
   export default{
     name:'index',
     components:{
-      Swiper,
-      SwiperSlide,
+      swiper,
+      swiperSlide,
       ServiceBar,
       Modal
     },
@@ -144,13 +144,13 @@
         // 不使用return包裹的数据会在项目的全局可见，会造成变量污染，使用return包裹后数据中变量只在当前组件中生效，不会影响其他组件
           swiperOption: {
             // 轮播效果，自动播放，循环
-          autoplay:true,
-          loop:true,
-        //   effect:'cube',
-          effect:'fade',
-          fadeEffect: {
-            crossFade: true
-          },
+            autoplay:true,
+            loop:true,
+            //   effect:'cube',
+            effect:'fade',
+            fadeEffect: {
+                crossFade: true
+            },
         //   分页器
           pagination: {
             el: '.swiper-pagination',
@@ -283,23 +283,31 @@
           }
         ],
         phoneList:[{
-                "id": 1,
-                "categoryId": 3,
-                "name": "iphone7",
-                "subtitle": "双十一促销",
-                "mainImage": "../../public/imgs/detail/phone-1.jpg",
-                "status":1,
-                "price": 7199.22
+                id: 1,
+                categoryId: 3,
+                name: 'iphone7',
+                subtitle:'双十一促销',
+                mainImage: '../../public/imgs/detail/phone-1.jpg',
+                status:1,
+                price: 7199.22
             },
             {
-                "id": 2,
-                "categoryId": 2,
-                "name": "oppo R8",
-                "subtitle": "oppo促销进行中",
-                "mainImage": "mainimage.jpg",
-                "status":1,
-                "price": 2999.11
-              }],
+                id: 1,
+                categoryId: 3,
+                name: 'iphone7',
+                subtitle:'双十一促销',
+                mainImage: '../../public/imgs/detail/phone-1.jpg',
+                status:1,
+                price: 7199.22
+            },{
+                id: 1,
+                categoryId: 3,
+                name: 'iphone7',
+                subtitle:'双十一促销',
+                mainImage: '../../public/imgs/detail/phone-1.jpg',
+                status:1,
+                price: 7199.22
+            }],
             // 默认不显示弹框，只有在点击时才显示
         showModal:false
       }
@@ -330,13 +338,13 @@
           productId:id,
           selected: true
         }).then((res) => {
-            // 显示弹框
+            // 加入购物车成功后，显示弹框
           this.showModal = true;
-          this.$store.dispatch('saveCartCount',res.cartTotalQuantity);
+          this.$store.dispatch('saveCartCount',res.cartTotalQuantity);//实时获取购物车数量
         });
       },
       goToCart(){
-        this.$router.push('cart');
+        this.$router.push('/cart');
       }
     }
   }

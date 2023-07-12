@@ -28,14 +28,14 @@ axios.interceptors.response.use(function(response){
     let path = location.hash;// 带#的就是hash路由，我们获取这个路由
   if(res.status == 0){
     return res.data;
-  } else if (res.status == 10) {
+  } else if (res.status == 10) {//如果报错是10表示未登录
       if (path != '#/index') {
           //只有首页可以不登录浏览，当打开其他界面时都会跳转到登录页面先进行登录
           //如果当前已经在首页，就不需要跳转到登录页面
           window.location.href = '/#/login';
       }
-    return Promise.reject(res);
-  }else{
+    return Promise.reject(res);//一旦非0，报错，就返回return，避免再次入栈执行程序
+  }else{// 如果报错非10才抛出异常
       Message.warning(res.msg);
     // 抛出异常，将res抛出去，使得之后需要以res为条件的代码都不能执行
     return Promise.reject(res);

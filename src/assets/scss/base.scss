@@ -1,3 +1,4 @@
+// 不加./默认在node_modules中加载，加./会优先在自己文件中查找
 @import './mixin.scss';
 @import './config.scss';
 .container{
@@ -22,20 +23,24 @@ input{
 //   文本框字体大小-根据网站系统风格设计
   font-size: 14px;
 }
+// 左浮动
 .fl{
   float: left;
 }
+// 右浮动
 .fr{
   float: right;
 }
+// 清除浮动
 .clearfix:before,.clearfix:after{
   content:' ';
   display:table;
 }
+// 伪标签-帮助占位
 .clearfix:after{
   clear: both;
 }
-// 公共logo
+// 公共logo样式
 .header-logo{
   display:inline-block;
   width:60px;

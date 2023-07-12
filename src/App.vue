@@ -24,14 +24,16 @@ export default {
   },
     methods: {
     // 实时拉取用户信息
-    getUser(){
+        getUser() {
+        // res用一个object对象占位
         this.axios.get('/user').then((res = {}) => {
         // 保存到vuex里面
         this.$store.dispatch('saveUserName',res.username);
       })
         },
     // 获取购物车数量
-    getCartCount(){
+        getCartCount() {
+        // 如果res为空，可能会报错，这里初始化为0
       this.axios.get('/carts/products/sum').then((res=0)=>{
         this.$store.dispatch('saveCartCount',res);
       })

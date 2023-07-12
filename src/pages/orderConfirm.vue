@@ -262,7 +262,7 @@ export default{
       this.showEditModal = false;
     },
     getCartList(){
-      this.axios.get('/carts').then((res)=>{
+      this.axios.get('/cart').then((res)=>{
         let list = res.cartProductVoList;//获取购物车中所有商品数据
         this.cartTotalPrice = res.cartTotalPrice;//商品总金额
         this.cartList = list.filter(item=>item.productSelected);

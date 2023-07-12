@@ -74,10 +74,10 @@ export default {
         this.$cookie.set('userId',res.id,{expires:'1M'});
         // 存储username--与下面的mapaction等同
         // this.$store.dispatch('saveUserName',res.username);
-        // 保存用户名-注册信息
+        // 保存用户名，注册信息--与下面的mapaction等同
         // this.saveUserName(res.username);
         // 点击登录之后跳转到首页
-        this.$router.push('/index');
+        this.$router.push('/#/index');
         /*this.$router.push({
           name:'index',
           params:{

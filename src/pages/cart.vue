@@ -1,7 +1,9 @@
 <template>
   <div class="cart">
     <order-header title="我的购物车">
+        <!-- 指定采用名称为tip的插槽 -->
       <template v-slot:tip>
+        <!-- 父组件指定插槽的内容，这里是插入一个span，具体插入位置由子组件orderheader决定-->
         <span>温馨提示：产品是否购买成功，以最终下单为准哦，请尽快结算</span>
       </template>
     </order-header>
@@ -79,7 +81,7 @@
     methods:{
       // 获取购物车列表
       getCartList(){
-        this.axios.get('/carts').then((res)=>{
+        this.axios.get('/cart').then((res)=>{
           this.renderData(res);
         })
       },
@@ -102,7 +104,7 @@
         }else{
           selected = !item.productSelected;
         }
-        this.axios.put(`/carts/${item.productId}`,{
+        this.axios.put(`/cart/${item.productId}`,{
           quantity,
           selected
         }).then((res)=>{
@@ -111,14 +113,14 @@
       },
       // 删除购物车商品
       delProduct(item){
-        this.axios.delete(`/carts/${item.productId}`).then((res)=>{
+        this.axios.delete(`/cart/${item.productId}`).then((res)=>{
           this.$message.success('删除成功');
           this.renderData(res);
         });
       },
       // 控制全选功能
       toggleAll(){
-        let url = this.allChecked?'/carts/unSelectAll':'/carts/selectAll';
+        let url = this.allChecked?'/cart/unSelectAll':'/cart/selectAll';
         this.axios.put(url).then((res)=>{
           this.renderData(res);
         })
