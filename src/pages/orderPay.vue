@@ -67,7 +67,7 @@
       @submit="goOrderList"
     >
       <template v-slot:body>
-        <p>您确认是否完成支付？</p>
+        <p>请您确认是否完成支付？</p>
       </template>
     </modal>
   </div>
@@ -127,6 +127,7 @@ export default{
           .then(url => {
             this.showPay = true;
             this.payImg = url;
+            // 当二维码生成出来就需要开始不断的调取订单状态
             this.loopOrderState();
           })
           .catch(() => {
@@ -139,13 +140,15 @@ export default{
     closePayModal(){
       this.showPay = false;
       this.showPayModal = true;
+      // 一旦关闭支付弹框，清理掉T，防止一直刷
       clearInterval(this.T);
     },
     // 轮询当前订单支付状态
     loopOrderState(){
       this.T = setInterval(()=>{
-        this.axios.get(`/orders/${this.orderId}`).then((res)=>{
+        this.axios.get(`/order/${this.orderId}`).then((res)=>{
           if(res.status == 20){
+            // 如果已支付，就取消轮询，并回到订单列表
             clearInterval(this.T);
             this.goOrderList();
           }

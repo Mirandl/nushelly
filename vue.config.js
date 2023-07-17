@@ -23,7 +23,7 @@ module.exports = {
   // publicPath:'/app',
   // outputDir:'dist',
   // indexPath:'index2.html',
-  // lintOnSave:false,
+  // lintOnSave:false,--关闭eslint语法校验，但建议开启
   productionSourceMap:true,
   chainWebpack:(config)=>{
     config.plugins.delete('prefetch');
