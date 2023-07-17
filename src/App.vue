@@ -15,11 +15,13 @@ export default {
       
     }
   },
-  mounted(){
+    mounted() {
+    // 优化：屏蔽掉没有必要的接口
+    // 如果能获取到用户id，表明是登陆了的状态
       if (this.$cookie.get('userId')) {
         // 调用两个方法
-      this.getUser();
-      this.getCartCount();
+        this.getUser();
+        this.getCartCount();
     }
   },
     methods: {
@@ -34,7 +36,7 @@ export default {
     // 获取购物车数量
         getCartCount() {
         // 如果res为空，可能会报错，这里初始化为0
-      this.axios.get('/carts/products/sum').then((res=0)=>{
+      this.axios.get('/cart/products/sum').then((res=0)=>{
         this.$store.dispatch('saveCartCount',res);
       })
     }

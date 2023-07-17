@@ -18,7 +18,7 @@ a{
 input{
     // 边线设置为无
   outline: none;
-//   不超区
+//   保证所有input框不超区
   box-sizing: border-box;
 //   文本框字体大小-根据网站系统风格设计
   font-size: 14px;

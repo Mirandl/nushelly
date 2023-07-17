@@ -22,7 +22,7 @@
           <a href="javascript:;" v-if="username">{{username}}那菈 您好！</a>
           <!-- 如果没有用户名才显示登录 -->
           <a class="login" href="javascript:;" v-if="!username" @click="login">登录</a>
-          <!-- 如果有username就加载退出-->
+          <!-- 如果有username就加载退出，如果退出来，用户名会清空，则登录也就会显示，而退出不显示-->
           <a href="javascript:;" v-if="username" @click="logout">退出</a>
           <!-- 如果有username就加载我的订单 -->
           <a href="/#/order/list" v-if="username">我的订单</a>
@@ -184,11 +184,14 @@
       }
     },
     mounted(){
-      this.getProductList();
-      let params = this.$route.params;
-      if(params && params.from == 'login'){
-        this.getCartCount();
-      }
+        this.getProductList();
+        // 来自login.vue传过来的params。$route表示当前路由实例
+        let params = this.$route.params;
+        // 加判断，如果是从登录页面跳过来的，才从这里获取，
+        // 否则app.vue已经调用过一次，这里就不需要了，避免资源浪费
+        if(params && params.from == 'login'){
+            this.getCartCount();
+        }
     },
     methods: {
         // 与后端交互，获取数据
@@ -216,10 +219,14 @@
           this.$store.dispatch('saveCartCount',res);
         })
       },
-      logout(){
+        logout() {
+        // 后台会获取到当前的会话id，自动把id给清理掉，再去访问就拉取不到用户信息
         this.axios.post('/user/logout').then(()=>{
-          this.$message.success('退出成功');
-          this.$cookie.set('userId','',{expires:'-1'});
+            this.$message.success('退出成功');
+        //   前端需要把之前渲染的东西清掉
+        // 将userId设为空，-1表示即刻过期
+            this.$cookie.set('userId', '', { expires: '-1' });
+        //   将用户名称和购物车数量都清空
           this.$store.dispatch('saveUserName','');
           this.$store.dispatch('saveCartCount','0');
         })

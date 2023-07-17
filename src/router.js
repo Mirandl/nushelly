@@ -57,7 +57,8 @@ export default new Router({
       path: '/cart',
       name: 'cart',
       component: () => import('./pages/cart.vue')
-    },
+        },
+    // 虽然order和cart结构上相似，但语义上还是分开了
     {
       path: '/order',
       name: 'order',

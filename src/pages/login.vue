@@ -69,7 +69,7 @@ export default {
         password
       }).then((res) => {
         // 登录，保存用户名
-        // expires设置cookie过期时间，session表示关闭对话框就过期了，也可以设置1M一个月过期
+        // expires设置cookie过期时间，session表示杀掉浏览器进程就过期了，也可以设置1M一个月过期
         // this.$cookie.set('userId',res.id,{expires:'Session'});
         this.$cookie.set('userId',res.id,{expires:'1M'});
         // 存储username--与下面的mapaction等同
@@ -77,13 +77,15 @@ export default {
         // 保存用户名，注册信息--与下面的mapaction等同
         // this.saveUserName(res.username);
         // 点击登录之后跳转到首页
-        this.$router.push('/#/index');
-        /*this.$router.push({
-          name:'index',
+        // this.$router.push('/index');
+        this.$router.push({
+          name: 'index',
+        //query传参相比于param，会将from：login附在网址后面，好处就是便于判断，缺点就是去不掉，一直有
+        //query传参对应使用path:'/index',params传参对应使用name:'index'
           params:{
             from:'login'
           }
-        });*/
+        });
         // 由于main.js已经有捕获异常的代码，这里就不写catch了
       })
     },

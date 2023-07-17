@@ -17,6 +17,7 @@
             </div>
             <div class="order-total">
               <p>应付总额：<span>{{payment}}</span>元</p>
+              <!-- 动态绑定class，showDetail控制是否展示，每次点击时，该变量取反 -->
               <p>订单详情<em class="icon-down" :class="{'up':showDetail}" @click="showDetail=!showDetail"></em></p>
             </div>
           </div>
@@ -80,7 +81,7 @@ export default{
   name:'order-pay',
   data(){
     return {
-      orderId:this.$route.query.orderNo,
+      orderId:this.$route.query.orderNo,//取参数，query相比params相当于get请求而非post请求，是可以看见参数
       addressInfo:'',//收货人地址
       orderDetail:[],//订单详情，包含商品列表
       showDetail:false,//是否显示订单详情
@@ -98,21 +99,24 @@ export default{
     Modal
   },
   mounted(){
-    this.getOrderDetail();
+    this.getOrderDetail();//初始化
   },
   methods:{
     getOrderDetail(){
-      this.axios.get(`/orders/${this.orderId}`).then((res)=>{
-        let item = res.shippingVo;
+        this.axios.get(`/orders/${this.orderId}`).then((res) => {
+        // 后台接口
+        let item = res.shippingVo;//收获的实例信息
         this.addressInfo = `${item.receiverName} ${item.receiverMobile} ${item.receiverProvince} ${item.receiverCity} ${item.receiverDistrict} ${item.receiverAddress}`;
         this.orderDetail = res.orderItemVoList;
         this.payment = res.payment;
       })
     },
     paySubmit(payType){
-      if(payType == 1){
+        if (payType == 1) {
+        // 支付宝跳转到alipay.vue，在新窗口跳转，_blank表示新窗口
         window.open('/#/order/alipay?orderId='+this.orderId,'_blank');
-      }else{
+        } else {
+        // 微信支付
         this.axios.post('/pay',{
           orderId:this.orderId,
           orderName:'Vue高仿小米商城',

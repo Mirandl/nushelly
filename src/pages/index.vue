@@ -334,7 +334,7 @@
         },
     //   点击添加购物车,将商品id添加到购物车
       addCart(id){
-        this.axios.post('/cart',{
+        this.axios.post('/#/cart',{
           productId:id,
           selected: true
         }).then((res) => {
@@ -344,7 +344,7 @@
         });
       },
       goToCart(){
-        this.$router.push('/cart');
+        this.$router.push('/#/cart');
       }
     }
   }

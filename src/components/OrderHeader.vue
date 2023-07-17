@@ -47,6 +47,7 @@
       float:left;
       margin-left:54px;
       h2{
+        // h2本身带的样式的优先级高于title，会覆盖其样式，因此需要给h2单独设置字体大小
         font-size:28px;
         color:#333333;
       }
