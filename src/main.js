@@ -40,9 +40,13 @@ axios.interceptors.response.use(function(response){
     // 抛出异常，将res抛出去，使得之后需要以res为条件的代码都不能执行
     return Promise.reject(res);
   }
-},(error)=>{
+},
+//http状态码请求失败
+(error)=>{
   let res = error.response;
+// 打印response返回结果的信息
   Message.error(res.data.message);
+// 不写return会正常进入程序then，这里需要抛出异常
   return Promise.reject(error);
 });
 

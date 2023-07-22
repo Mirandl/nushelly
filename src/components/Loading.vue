@@ -1,5 +1,5 @@
 <template>
-    <!-- 加载动画 -->
+    <!-- 加载动画 svg不会失真-->
   <div class="loading">
     <img src="../../public/imgs/loading-svg/loading-bars.svg" alt="">
   </div>
