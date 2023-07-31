@@ -62,9 +62,10 @@
   </div>
 </template>
 <script>
-import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
+import { swiper, swiperSlide } from 'vue-awesome-swiper'
 import ProductParam from './../components/ProductParam'
 import ServiceBar from './../components/ServiceBar';
+import 'swiper/dist/css/swiper.css'
 export default{
   name:'detail',
   data(){
@@ -83,8 +84,8 @@ export default{
     }
   },
   components:{
-    Swiper,
-    SwiperSlide,
+    swiper,
+    swiperSlide,
     ProductParam,
     ServiceBar
   },
@@ -94,13 +95,14 @@ export default{
   methods:{
       getProductInfo() {
         // let id = this.$route.params.id; 在上面统一抽取
-        this.axios.get(`/products/${this.id}`).then((res)=>{
+        this.axios.get('/products/${this.id}').then((res)=>{
         this.product = res;
       })
     },
     addCart(){
       this.axios.post('/cart',{
-        productId:this.id,
+        // productId:this.id,
+        productId:10,
         selected: true // 默认选中
       }).then((res={cartProductVoList:0})=>{
         this.$store.dispatch('saveCartCount',res.cartTotalQuantity);
@@ -141,14 +143,14 @@ export default{
         }
         .delivery{
           font-size:16px;
-          color:#FF6700;
+          color:$colorA;
           margin-top:26px;
           margin-bottom:14px;
           height: 15px;
         }
         .item-price{
           font-size:20px;
-          color:#FF6700;
+          color:$colorA;
           height: 19px;
           .del{
             font-size:16px;
@@ -184,7 +186,7 @@ export default{
           }
           .stock{
             margin-top:15px;
-            color:#FF6700;
+            color:$colorA;
           }
         }
         .item-version,.item-color{
@@ -217,8 +219,8 @@ export default{
             }
             // 选中的颜色
             &.checked{
-              border:1px solid #FF6600;
-              color:#FF6600;
+              border:1px solid $colorA;
+              color:$colorA;
             }
           }
         }
@@ -232,7 +234,7 @@ export default{
           box-sizing: border-box;
           .phone-total{
             font-size: 24px;
-            color: #FF6600;
+            color: $colorA;
             margin-top: 18px;
           }
         }

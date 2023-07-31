@@ -34,7 +34,7 @@
     mounted() {
         // 获取路由地址
         let path = this.$route.path;
-        if (path == '/order/copnfirm') {
+        if (path == '/order/confirm') {
             this.title = '订单确认';
             this.tip = '请认真填写收货地址';
         } else if (path == '/order/list') {

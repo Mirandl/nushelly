@@ -9,16 +9,18 @@ import 'element-ui/lib/theme-chalk/index.css'
 // 引入store，默认读取其中的index.js对象--vuex
 import store from './store'
 import App from './App.vue'
+
 // import env from './env'
 // mock开关
-const mock = false;
-if(mock){
-  require('./mock/api');
-}
+// const mock = false;
+// if(mock){
+//   require('./mock/api');
+// }
 // 根据前端的跨域方式做调整 /a/b : /api/a/b => /a/b
 // axios.defaults.baseURL = 'https://www.easy-mock.com/mock/5dc7afee2b69d9223b633cbb/mimall';
 // 如果不是代理跨域，这里的路径还需要更改成其他网址
 axios.defaults.baseURL = '/api';
+// axios.defaults.baseURL = '/';
 axios.defaults.timeout = 8000; 
 // 根据环境变量获取不同的请求地址
 // axios.defaults.baseURL = env.baseURL;
@@ -52,11 +54,21 @@ axios.interceptors.response.use(function(response){
 
 Vue.use(VueAxios,axios);
 Vue.use(VueCookie);// 加载cookie
+const loadimage = require('../public/imgs/loading-svg/loading-spinning-bubbles.svg')
+const errorimage = require('../public/imgs/loading-svg/loading-spokes.svg')
+
 Vue.use(VueLazyLoad, {
-    // 全局配置--加载动画
-    // 图片有固定分辨率，超出分辨率会失真，而svg矢量图不管放多大多小都不会失真，但制作成本较高
-  loading:'../public/imgs/loading-svg/loading-bars.svg'
+  preLoad: 1, // 预载高度比例
+  error: errorimage,
+  loading: loadimage,
+  attempt: 2 //尝试加载的次数
 })
+
+// Vue.use(VueLazyLoad, {
+//     // 全局配置--加载动画
+//     // 图片有固定分辨率，超出分辨率会失真，而svg矢量图不管放多大多小都不会失真，但制作成本较高
+//   loading:'../public/imgs/loading-svg/loading-bars.svg'
+// })
 Vue.prototype.$message = Message;
 Vue.config.productionTip = false
 

@@ -51,7 +51,7 @@
         </div>
         <swiper v-bind:options="swiperOption">
         <!-- 在循环列表里依次读取并播放，key方便缓存 -->
-          <swiper-slide v-for="(item,index) in slideList" v-bind:key="index">
+          <swiper-slide  class="swiperslide" v-for="(item,index) in slideList" v-bind:key="index">
             <!-- 动态获取 封装路由 -->
             <a v-bind:href="'/#/product/'+item.id"><img v-bind:src="item.img"></a>
           </swiper-slide>
@@ -72,8 +72,8 @@
       </div>
 
       <div class="banner">
-        <a href="/#/product/30">
-          <img v-lazy="'https://h2.appsimg.com/b.appsimg.com/upload/mst/2023/05/19/30/ef5e78119e17838134ff4323197661ba.jpg!75.webp'" alt="">
+        <a href="/#/product/1">
+          <img src="https://h2.appsimg.com/b.appsimg.com/upload/mst/2023/05/19/30/ef5e78119e17838134ff4323197661ba.jpg!75.webp" alt="">
         </a>
       </div>
     </div>
@@ -82,28 +82,29 @@
       <div class="container">
         <h2>好物推荐</h2>
         <div class="wrapper">
-          <div class="banner-left">
-            <a href="/#/product/12"><img v-lazy="'./../../public/imgs/mix-alpha.jpg'" alt=""></a>
-          </div>
+          <!-- <div class="banner-left">
+            <a href="/#/product/1"><img v-lazy="'../../../public/imgs/mix1.jpg'" alt=""></a>
+          </div> -->
           <div class="list-box">
-            <div class="list" v-for="(arr,i) in phoneList" v-bind:key="i">
+            <div class="list" v-for="(arr,i) in wearList" v-bind:key="i">
               <div class="item" v-for="(item,j) in arr" v-bind:key="j">
                 <!-- 给新品加判断条件 -->
                 <span v-bind:class="{'new-pro':j%2==0}">新品</span>
                 <div class="item-img">
-                  <img v-lazy="item.mainImage" alt="">
+                    <img v-lazy="item.mainImage" alt="">
                 </div>
                 <div class="item-info">
-                  <h3>{{item.name}}</h3>
-                  <p>{{item.subtitle}}</p>
-                  <p class="price" @click="addCart(item.id)">{{item.price}}元</p>
+                <h3>{{item.name}}</h3>
+                <p>{{item.subtitle}}</p>
+                <p class="price" @click="addCart(item.id)">{{item.price}}元</p>
                 </div>
-              </div>
+             </div>
             </div>
+           </div>
           </div>
         </div>
-      </div>
     </div>
+    <!-- </div> -->
     <service-bar></service-bar>
     <!-- 模态框-弹窗 -->
     <modal 
@@ -122,7 +123,7 @@
         <p>商品添加成功！</p>
       </template>
     </modal>
-  </div>
+ </div>
 </template>
 <script>
   import ServiceBar from './../components/ServiceBar'
@@ -151,14 +152,14 @@
             fadeEffect: {
                 crossFade: true
             },
-        //   分页器
-          pagination: {
+            //   分页器
+            pagination: {
             el: '.swiper-pagination',
             // 点击下方小圆点就可以跳转到图片了
             clickable:true
-          },
-          // 前进后退 的导航，左右箭头
-          navigation: {
+           },
+            // 前进后退 的导航，左右箭头
+            navigation: {
             nextEl: '.swiper-button-next',
             prevEl: '.swiper-button-prev',
           }
@@ -166,12 +167,9 @@
         // 参与轮播的图片
         slideList:[
             // 有id的需要跳转
-            {id:'1',
-            img:'https://b.appsimg.com/upload/momin/2023/06/30/15/1688119689001.jpg'
-          },
             {
             id:'2',
-            img:'https://b.appsimg.com/upload/momin/2023/06/28/50/1687940476973.jpg'
+            img:'https://h2.appsimg.com/a.appsimg.com/upload/brand/upcb/2023/02/17/179/ias_87da35d83e02ac3273d7eb6684741693_1135x545_85.jpg'
           },
           {
             id:'3',
@@ -180,16 +178,12 @@
             {
             // 无id不跳转
             id:'4',
-            img:'https://h2.appsimg.com/a.appsimg.com/upload/brand/upcb/2023/06/28/7/ias_1687942517356664569_1135x545_85.jpg'
+            img:'https://h2.appsimg.com/a.appsimg.com/upload/brand/upcb/2023/07/24/70/ias_a6ebfed5e7ab1edefe6a452494de3330_1135x545_85.jpg'
           },
           {
             id:'5',
             img:'https://h2.appsimg.com/a.appsimg.com/upload/brand/upcb/2023/05/30/114/ias_47e0a4687d0db7d857ad8d33106d0d97_1135x545_85.jpg'
-            },
-          {
-            id:'6',
-            img:'https://h2.appsimg.com/a.appsimg.com/upload/brand/upcb/2023/06/30/126/ias_1688119192678316611_1135x545_85.jpg'
-          } 
+            }
         ],
         menuList:[
           [
@@ -270,24 +264,75 @@
         adsList:[
           {
             id:33,
-            img:'https://h2.appsimg.com/b.appsimg.com/upload/momin/2023/06/28/124/1687935916573_756x500_90.jpg'
+            img:'https://h2.appsimg.com/b.appsimg.com/upload/momin/2023/07/21/190/1689921979647_756x500_90.jpg'
           },{
             id:48,
-            img:'https://h2.appsimg.com/b.appsimg.com/upload/momin/2023/06/28/168/1687935791089_756x500_90.jpg'
+            img:'https://h2.appsimg.com/b.appsimg.com/upload/momin/2023/07/21/89/1689922008925_756x500_90.jpg'
           },{
             id:45,
-            img:'https://h2.appsimg.com/b.appsimg.com/upload/momin/2023/06/28/185/1687935796417_756x500_90.jpg'
+            img:'https://h2.appsimg.com/b.appsimg.com/upload/momin/2023/07/21/16/1689921992593_756x500_90.jpg'
           },{
             id:47,
             img:'https://h2.appsimg.com/b.appsimg.com/upload/momin/2023/06/28/124/1687935916573_756x500_90.jpg'
           }
         ],
-        phoneList:[{
+        wearList: [
+              [{
+                id: 1,
+                categoryId: 3,
+                name: '游园梦境',
+                subtitle:'复古日系无袖亚麻炒色',
+                mainImage: require('./../../public/imgs/mix1.jpg'),
+                status:1,
+                price: 399.00
+            },{
+                id: 1,
+                categoryId: 3,
+                name: '游园梦境',
+                subtitle:'复古日系无袖亚麻炒色',
+                mainImage: 'https://img.alicdn.com/imgextra/i1/362703105/O1CN01TpHUe21Yo8cjB51ug_!!362703105.jpg_400x400.jpg',
+                status:1,
+                price: 399.00
+            },
+            {
+                id: 1,
+                categoryId: 3,
+                name: '绿野仙踪',
+                subtitle:'文艺多巴胺撞色开衫外搭',
+                mainImage: 'https://img.alicdn.com/imgextra/i4/362703105/O1CN01zOnjsc1Yo8dUkEijA_!!362703105.jpg_400x400.jpg',
+                status:1,
+                price: 399.00
+            },{
+                id: 1,
+                categoryId: 3,
+                name: '香农夫人',
+                subtitle:'新款宫廷文艺蓝色纯色小飞袖',
+                mainImage: 'https://img.alicdn.com/bao/uploaded/i3/362703105/O1CN01xVBeXH1Yo8ds8J0aF_!!362703105.jpg_400x400.jpg',
+                status:1,
+                price: 599.00
+            },{
+                id: 1,
+                categoryId: 3,
+                name: '吟风者',
+                subtitle:'文艺宽松半袖双层多巴胺拼色',
+                mainImage: 'https://img.alicdn.com/bao/uploaded/i3/362703105/O1CN01WrSLLo1Yo8dtzzegh_!!362703105.jpg_400x400.jpg',
+                status:1,
+                price: 368.00
+            },{
+                id: 1,
+                categoryId: 3,
+                name: '蓝色芭蕾',
+                subtitle:'夏季新款宫廷风荷叶领无袖',
+                mainImage: 'https://img.alicdn.com/imgextra/i3/362703105/O1CN019dRZKP1Yo8cZKJ6CF_!!362703105.jpg_400x400.jpg',
+                status:1,
+                price: 389.00
+                  }],
+              [{
                 id: 1,
                 categoryId: 3,
                 name: 'iphone7',
                 subtitle:'双十一促销',
-                mainImage: '../../public/imgs/detail/phone-1.jpg',
+                mainImage: 'https://gw.alicdn.com/imgextra/i4/2209697117130/O1CN01VdEZa222XanUO20ef-2209697117130.jpg_Q75.jpg_.webp',
                 status:1,
                 price: 7199.22
             },
@@ -307,7 +352,65 @@
                 mainImage: '../../public/imgs/detail/phone-1.jpg',
                 status:1,
                 price: 7199.22
-            }],
+            },{
+                id: 1,
+                categoryId: 3,
+                name: 'iphone7',
+                subtitle:'双十一促销',
+                mainImage: '../../public/imgs/detail/phone-1.jpg',
+                status:1,
+                price: 7199.22
+            },{
+                id: 1,
+                categoryId: 3,
+                name: 'iphone7',
+                subtitle:'双十一促销',
+                mainImage: '../../public/imgs/detail/phone-1.jpg',
+                status:1,
+                price: 7199.22
+                  }],[{
+                id: 1,
+                categoryId: 3,
+                name: 'iphone7',
+                subtitle:'双十一促销',
+                mainImage: 'https://gw.alicdn.com/imgextra/i4/2209697117130/O1CN01VdEZa222XanUO20ef-2209697117130.jpg_Q75.jpg_.webp',
+                status:1,
+                price: 7199.22
+            },
+            {
+                id: 1,
+                categoryId: 3,
+                name: 'iphone7',
+                subtitle:'双十一促销',
+                mainImage: '../../public/imgs/detail/phone-1.jpg',
+                status:1,
+                price: 7199.22
+            },{
+                id: 1,
+                categoryId: 3,
+                name: 'iphone7',
+                subtitle:'双十一促销',
+                mainImage: '../../public/imgs/detail/phone-1.jpg',
+                status:1,
+                price: 7199.22
+            },{
+                id: 1,
+                categoryId: 3,
+                name: 'iphone7',
+                subtitle:'双十一促销',
+                mainImage: '../../public/imgs/detail/phone-1.jpg',
+                status:1,
+                price: 7199.22
+            },{
+                id: 1,
+                categoryId: 3,
+                name: 'iphone7',
+                subtitle:'双十一促销',
+                mainImage: '../../public/imgs/detail/phone-1.jpg',
+                status:1,
+                price: 7199.22
+                  }]
+        ],
             // 默认不显示弹框，只有在点击时才显示
         showModal:false
       }
@@ -322,7 +425,7 @@
         this.axios.get('/products',{
             params: {
             // 商品品类
-                categoryId: 100012,
+            categoryId: 100012,
             // 要取过来的商品个数，原本的6个加现在需要的8个
             pageSize:14
           }
@@ -338,7 +441,7 @@
           productId:id,
           selected: true
         }).then((res) => {
-            // 加入购物车成功后，显示弹框
+        // 加入购物车成功后，显示弹框
           this.showModal = true;
           this.$store.dispatch('saveCartCount',res.cartTotalQuantity);//实时获取购物车数量
         });
@@ -363,7 +466,8 @@
         height:428px;
         z-index:9;
         padding:26px 0;
-        background-color:#55585a7a;
+        background-color:#0e584abf;
+        box-shadow: -2px -2px 15px 1px rgb(234, 228, 229) inset;
         box-sizing:border-box;
         .menu-wrap{
           .menu-item{
@@ -464,6 +568,20 @@
           }
         }
       }
+      .swiper-pagination {
+        width:400px;
+        left:auto;
+        right:30px;
+        bottom:20px;
+        text-align: right;
+      }
+      .swiperslide{
+        a img{
+            float:right;
+            width:963px;
+            box-shadow: 2px 2px 15px 1px #fff inset;
+        }
+      }
       .swiper-container {
         height: 428px;
         .swiper-button-prev{
@@ -499,17 +617,17 @@
       }
       .wrapper{
         display:flex;
-        .banner-left{
-          margin-right:16px;
-          img{
-            width:224px;
-            height:619px;
-          }
-        }
+        //.banner-left{
+        //  margin-right:16px;
+        //  img{
+        //    width:224px;
+        //    height:619px;
+        //  }
+        //}
         .list-box{
           .list{
             @include flex();
-            width:986px;
+            width:1226px;
             margin-bottom:14px;
             &:last-child{
               margin-bottom:0;
@@ -517,7 +635,7 @@
             .item{
               width:236px;
               height:302px;
-              background-color:$colorG;
+              background-color:#ececec;
               text-align:center;
               span{
                 display:inline-block;
@@ -527,20 +645,21 @@
                 line-height:24px;
                 color:$colorG;
                 &.new-pro{
-                  background-color:#7ECF68;
+                  background-color:$colorB;
                 }
                 &.kill-pro{
-                  background-color:#E82626;
+                  background-color:$colorA;
                 }
               }
               .item-img{
                 img{
-                  width:100%;
+                  width:auto;
                   height:195px;
                 }
               }
               .item-info{
                 h3{
+                  padding-top: 10px;
                   font-size:$fontJ;
                   color:$colorB;
                   line-height:$fontJ;
@@ -549,10 +668,10 @@
                 p{
                   color:$colorD;
                   line-height:13px;
-                  margin:6px auto 13px;
+                  margin:6px auto 8px;
                 }
                 .price{
-                  color:#F20A0A;
+                  color:$colorA;
                   font-size:$fontJ;
                   font-weight:bold;
                   cursor:pointer;
@@ -570,4 +689,6 @@
       }
     }
   }
+  
+
 </style>

@@ -3,7 +3,7 @@
   <!-- 标题 -->
     <order-header title="订单列表">
       <template v-slot:tip>
-        <span>请谨防钓鱼链接或诈骗电话，安全购物</span>
+        <span>谨防钓鱼链接或诈骗电话，安全购物</span>
       </template>
     </order-header>
     <!-- 正文 -->
@@ -54,7 +54,7 @@
               </div>
             </div>
           </div>
-          <!-- 分页器 -->
+          <!-- 分页器  v-if="true"表示使用这个功能 进行上线部署 -->
           <el-pagination
             v-if="true"
             class="pagination"
@@ -74,14 +74,14 @@
             绑定自定义事件
              -->
           </el-pagination>
-          <!-- 点击按钮，往后继续加载下一页 -->
-          <!-- <div class="load-more" v-if="false"> -->
-          <div class="load-more" v-if="showNextPage">
+          <!-- 点击按钮，往后继续加载下一页 --加载更多 这个功能在上线时直接屏蔽掉-->
+          <div class="load-more" v-if="false">
+          <!-- <div class="load-more" v-if="showNextPage"> -->
           <!-- 通过类来控制按钮布局，让块级元素下的行内元素居中。如果在el-buttun只会让按钮中的文字居中 -->
           <!-- 类型是初始类型，绑定加载为本页面已有的loading变量，点击时就会有loading动画 -->
               <el-button type="primary" :loading="loading" @click="loadMore">加载更多</el-button>
           </div>
-          <!-- 往下滚动到距离底部410像素时开始加载下一页的内容 -->
+          <!-- 滚动加载这个功能在上线时屏蔽掉-v-if="false"  往下滚动到距离底部410像素时开始加载下一页的内容 -->
           <div class="scroll-more"
             v-infinite-scroll="scrollMore"
             infinite-scroll-disabled="true"

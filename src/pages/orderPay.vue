@@ -2,7 +2,7 @@
   <div class="order-pay">
     <order-header title="订单支付">
       <template v-slot:tip>
-        <span>请谨防钓鱼链接或诈骗电话，了解更多</span>
+        <span>请确认信息完整无误 再行支付</span>
       </template>
     </order-header>
     <div class="wrapper">
@@ -12,7 +12,7 @@
             <div class="icon-succ"></div>
             <div class="order-info">
               <h2>订单提交成功！去付款咯～</h2>
-              <p>请在<span>30分</span>内完成支付, 超时后将取消订单</p>
+              <p>请在<span>30分</span>内完成支付, 超时会取消订单哦~</p>
               <p>收货信息：{{addressInfo}}</p>
             </div>
             <div class="order-total">

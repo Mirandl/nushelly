@@ -50,7 +50,7 @@
               <span>推荐</span>
           </div>
           <div class="item-menu">
-              <span>3折疯抢</span>
+              <span>低价好物</span>
           </div>
           <!-- 直接读取后台数据，当数据量大时，用key自动缓存，渲染速度更高，复用率更高
           <li class="product" v-for="(item,index) in phoneList" :key="index">
@@ -128,10 +128,10 @@
             </div>
           </div>
           <div class="item-menu">
-              <span>甜酷青春</span>
+              <span>恣意之夏</span>
           </div>
           <div class="item-menu">
-              <span>随性真我</span>
+              <span>新品抢鲜</span>
           </div>
           <div class="item-menu">
               <span>售后服务</span>
@@ -247,9 +247,10 @@
   .header{
     background-color: #fff;
     .nav-topbar{
-      height:39px;
-      line-height:39px;
+      height:45px;
+      line-height:45px;
       background-color:$colorB;
+      box-shadow: -2px -2px 5px 1px rgb(234, 228, 229) inset;
       color:$colorG;
       .container{
         // 抽离功能，增加复用性
@@ -267,6 +268,7 @@
         .my-cart{
           width:110px;
           background-color:$colorA;
+          box-shadow: -2px -2px 10px 1px rgb(234, 228, 229) inset;
           text-align:center;
           color:#ffffff;
           margin-right:0;
@@ -294,7 +296,7 @@
             display:inline-block;
             color:#333333;
             font-weight:bold;
-            font-size:16px;
+            font-size:18px;
             line-height:112px;
             margin-right:20px;
             span{

@@ -50,7 +50,7 @@
           <div class="video" v-bind:class="showSlide">
             <span class="icon-close" @click="closeVideo"></span>
             <!-- html5支持video标签，设置autoplay自动播放，muted是静音输出，control开启视频相关控件 -->
-            <video src="../../public/imgs/product/video.mp4" muted autoplay controls="controls"></video>
+            <video src="../../public/imgs/product/video_raw.mp4" muted autoplay controls="controls"></video>
           </div>
         </div>
       </div>

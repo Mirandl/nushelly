@@ -23,8 +23,8 @@
             <a href="javascript:;" class="btn" @click="login">登录</a>
           </div>
           <div class="tips">
-            <div class="sms" @click="register">手机短信登录/注册</div>
-            <div class="reg">立即注册<span>|</span>忘记密码？</div>
+            <div class="sms">手机短信登录/注册</div>
+            <div class="reg" ref="" @click="register">立即注册<span>|</span>忘记密码？</div>
           </div>
         </div>
       </div>
@@ -110,6 +110,7 @@ export default {
 }
 </script>
 <style lang="scss">
+@import './../assets/scss/config.scss';
 .login{
   &>.container{
     height:113px;
@@ -141,7 +142,7 @@ export default {
           text-align:center;
           margin:40px auto 49px;
           .checked{
-            color:#FF6600;
+            color:$colorA;
           }
           .sep-line{
             margin:0 32px;
@@ -173,13 +174,16 @@ export default {
           font-size:14px;
           cursor:pointer;
           .sms{
-            color:#FF6600;
+            color:#999;
           }
           .reg{
-            color:#999999;
+            color:$colorA;
             span{
               margin:0 7px;
             }
+          }
+          .reg:hover{
+            font-weight:bold;
           }
         }
       }

@@ -2,7 +2,7 @@
   <div class="order-confirm">
     <order-header title="订单确认">
       <template v-slot:tip>
-        <span>请认真填写收货地址</span>
+        <span>请填写您的订单信息，尽快结算</span>
       </template>
     </order-header>
     <!-- 传入矢量图，比图片地址的代码量要小很多，因为不用发请求 -->
@@ -48,7 +48,7 @@
                       <use xlink:href="#icon-del"></use>
                     </svg>
                   </a>
-                   <!-- a标签控制编辑图标 -->
+                   <!-- a标签控制编辑图标 -->cartList
                   <a href="javascript:;" class="fr" @click="editAddressModal(item)">
                     <svg class="icon icon-edit">
                       <use xlink:href="#icon-edit"></use>
@@ -82,7 +82,7 @@
           </div>
           <div class="item-shipping">
             <h2>配送方式</h2>
-            <span>包邮</span>
+            <span>已享包邮</span>
           </div>
           <div class="item-invoice">
             <h2>发票</h2>
@@ -99,8 +99,8 @@
               <span class="item-val">{{cartTotalPrice}}元</span>
             </div>
             <div class="item">
-              <span class="item-name">优惠活动：</span>
-              <span class="item-val">0元</span>
+              <span class="item-name">优惠减免：</span>
+              <span class="item-val">-5元</span>
             </div>
             <div class="item">
               <span class="item-name">运费：</span>
@@ -300,7 +300,7 @@ export default{
       this.axios[method](url,params).then(()=>{
         this.closeModal();//通用方法抽取到了下面，用来关闭弹窗
         this.getAddressList();//地址设为空
-        this.$message.success('操作成功');
+        this.$message.success('操作成功!');
       });
     },
     closeModal(){
@@ -345,19 +345,20 @@ export default{
 }
 </script>
 <style lang="scss">
+  @import './../assets/scss/config.scss';
   .order-confirm{
     .wrapper{
-      background-color:#F5F5F5;
+      background-color:$colorJ;
       padding-top:30px;
       padding-bottom:84px;
       // 安全区内的所有，包括地址栏和商品栏
       .order-box{
-        background-color:#ffffff;
+        background-color:$colorG;
         padding-left: 40px;
         padding-bottom: 40px;
         .addr-title{
           font-size: 20px;
-          color: #333333;
+          color: #333;
           font-weight: 200;
           margin-bottom:21px;
         }
@@ -369,7 +370,7 @@ export default{
               float: left;
               width:271px;
               height:180px;
-              border:1px solid #E5E5E5;
+              border:1px solid $colorH;
               margin-right: 15px;
               padding: 15px 24px;
               font-size: 14px;
@@ -393,20 +394,20 @@ export default{
                 .icon{
                   width: 20px;
                   height: 20px;
-                  fill: #666666;
+                  fill: #666;
                   vertical-align: middle;
                   &:hover{
-                    fill: #FF6700;
+                    fill: $colorA;
                   }
                 }
               }
               &.checked{
-                border:1px solid #ff6700;
+                border:1px solid $colorA;
               }
             }
             .addr-add{
               text-align:center;
-              color: #999999;
+              color: #999;
               cursor:pointer;
               .icon-add{
                 width:30px;
@@ -423,10 +424,10 @@ export default{
         }
         .item-good{
           margin-top:34px;
-          border-bottom: 1px solid #E5E5E5;
+          border-bottom: 1px solid $colorH;
           padding-bottom: 12px;
           h2{
-            border-bottom:1px solid #E5E5E5;
+            border-bottom:1px solid $colorH;
             padding-bottom: 5px;
           }
           li{
@@ -436,7 +437,7 @@ export default{
             line-height:40px;
             margin-top:10px;
             font-size:16px;
-            color:#333333;
+            color:#333;
             .good-name{
               flex:5;
               img{
@@ -450,7 +451,7 @@ export default{
             }
             .good-total{
               padding-right:44px;
-              color:#FF6600;
+              color:$colorA;
             }
           }
         }
@@ -465,18 +466,18 @@ export default{
           }
           span,a{
             font-size:16px;
-            color:#FF6700;
+            color:$colorA;
             margin-right:23px;
           }
         }
         .detail{
           padding: 50px 44px 33px 0;
-          border-bottom: 1px solid #f5f5f5;
+          border-bottom: 1px solid $colorJ;
           text-align: right;
           font-size: 16px;
-          color: #666666;
+          color: $colorC;
           .item-val{
-            color:#FF6700;
+            color:$colorA;
           }
           .item{
             line-height: 15px;
@@ -509,7 +510,7 @@ export default{
           height:40px;
           line-height:40px;
           padding-left:15px;
-          border:1px solid #E5E5E5;
+          border:1px solid $colorH;
           // 给当前input的第二个兄弟元素添加左外边距
           &+.input{
             margin-left:14px;
@@ -519,7 +520,7 @@ export default{
         select{
           height:40px;
           line-height:40px;
-          border:1px solid #E5E5E5;
+          border:1px solid $colorH;
           margin-right:15px;
         }
         // 详细地址
@@ -528,7 +529,7 @@ export default{
           width:100%;
           padding:13px 15px;
           box-sizing:border-box;
-          border:1px solid #E5E5E5;
+          border:1px solid $colorH;
         }
       }
     }
