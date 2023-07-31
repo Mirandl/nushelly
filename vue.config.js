@@ -20,6 +20,7 @@ module.exports = {
       }
     }
   },
+  //你好
   // publicPath:'/app',
   // outputDir:'dist',
   // indexPath:'index2.html',
